@@ -22,7 +22,7 @@ const searchRange2 = function(nums, target) {
     if (nums[i] !== target) {
       i++
     }
-      
+
     if (target !== nums[j]) {
       j--
     }
@@ -37,6 +37,6 @@ const searchRange2 = function(nums, target) {
 }
 
 let list = [5,7,7,8,8,10]
-// let ret = searchRange(list, 8)
-let ret = searchRange2(list, 8)
+let ret = searchRange(list, 8)
+// let ret = searchRange2(list, 8)
 console.log(ret)

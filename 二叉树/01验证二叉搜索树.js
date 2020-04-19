@@ -1,4 +1,4 @@
-var isValidBST = function(root) {
+const isValidBST = function(root) {
   const arr = tree2Arr(root);
   for (let i = 0; i < arr.length - 1; i++) {
     if (arr[i + 1] <= arr[i]) return false;
