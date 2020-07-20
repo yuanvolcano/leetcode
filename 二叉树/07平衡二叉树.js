@@ -1,5 +1,9 @@
+
+// 实现一个函数，检查二叉树是否平衡。在这个问题中，平衡树的定义如下：任意一个节点，其两棵子树的高度差不超过 1。
+
 /**
  * @param {Object} root 根节点
+ * @returns {boolean}
  */
 const isBalanced = function(root) {
   // 比较根节点
