@@ -30,7 +30,7 @@ function letterCombinations2 (digits) {
   if (!digits) {
     return []
   }
-  let numMap = new Map(), stack = [], result = [], tmp,  tmpLen, i = 0, digitsLen = digits.length;
+  let numMap = new Map(), stack = [], result = [], tmp, tmpLen, i = 0, digitsLen = digits.length;
   numMap.set('2', 'abc')
   numMap.set('3', 'def')
   numMap.set('4', 'ghi')
@@ -62,7 +62,7 @@ function letterCombinations2 (digits) {
     digits = digits.slice(1)
   }
   return digitsLen === 1 ? stack : result
-} 
+}
 
 let str = '234'
 let res = letterCombinations2(str)
