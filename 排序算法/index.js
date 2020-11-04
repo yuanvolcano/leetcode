@@ -4,7 +4,7 @@ const mergeSort = require('./06merge')
 const countingSort = require('./08counting')
 
 const arr = []
-for (let i = 0; i < 10000000; i++) {
+for (let i = 0; i < 1000000; i++) {
   arr.push(Math.ceil(Math.random() * 10000000))
 }
 

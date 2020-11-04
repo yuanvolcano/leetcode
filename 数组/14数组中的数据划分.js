@@ -22,7 +22,7 @@ function partition (nums) {
   for (let i = 1, len = nums.length; i < len; i++) {
     if (nums[i] < baseVal) {
       let item = nums.splice(i, 1)
-      nums.unshift(...item)
+      nums.unshift(item)
     }
   }
   return nums

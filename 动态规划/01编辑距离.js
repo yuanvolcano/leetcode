@@ -4,7 +4,7 @@
 // 状态转移方程
 // 当word[i] === word[j]时
 // d(i, j) = Math.min(d(i - 1, j - 1), d(i - 1, j) + 1, d(i, j - 1) + 1)
-// 当word[i] === word[j]时
+// 当word[i] !== word[j]时
 // d(i, j) = Math.min(d(i - 1, j - 1) + 1, d(i - 1, j) + 1, d(i, j - 1) + 1)
 
 const minDistance = function(word1, word2) {
@@ -44,6 +44,7 @@ const minDistance = function(word1, word2) {
       }
     }
   }
+
   return minDisArr[mLen - 1][nLen - 1]
 }
 

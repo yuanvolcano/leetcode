@@ -23,5 +23,44 @@ const addStrings = function(num1, num2) {
   return ''
 }
 
-let res = addStrings('9', '2')
-console.log(res)
+const addStrings2 = function(num1, num2) {
+  let l1 = num1.length - 1, l2 = num2.length - 1
+
+  let temp = 0, res = ''
+
+  while (l1 >= 0 || l2 >= 0) {
+    let val1 = 0, val2 = 0
+    if (l1 >= 0) {
+      val1 = num1[l1] - '0'
+      l1--
+    }
+    if (l2 >= 0) {
+      val2 = num2[l2] - '0'
+      l2--
+    }
+
+    let sum = val1 + val2 + temp
+    if (sum > 9) {
+      temp = 1
+      sum -= 10
+    } else {
+      temp = 0
+    }
+    res = sum + res
+  }
+
+  if (temp) {
+    res = temp + res
+  }
+  return res
+}
+
+
+console.time('addStrings')
+let res = addStrings('9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999', '1')
+console.timeEnd('addStrings')
+
+console.time('addStrings2')
+let res2 = addStrings2('9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999', '1')
+console.timeEnd('addStrings2')
+console.log(res === res2)

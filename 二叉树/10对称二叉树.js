@@ -22,7 +22,7 @@ const isSymmetric = function (root) {
     j--
   }
   return true
-};
+}
 
 function genArr (node, arr, level = 1) {
   if (node.left) {
