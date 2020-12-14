@@ -46,6 +46,22 @@ const removeNthFromEnd = function (head, n) {
   }
 }
 
+const removeNthFromEnd2 = function (head, n) {
+  let first = 0, target = source = head
+  while (first <= n) {
+    head = head.next
+    first++
+  }
+  while (head) {
+    target = target.next
+    head = head.next
+  }
+  if (target && target.next) {
+    target.next = target.next.next
+  }
+  return source
+}
+
 const listNode = {
   val: 1,
   next: {
@@ -68,5 +84,6 @@ const listNode = {
 //   next: null
 // }
 
-const res = removeNthFromEnd(listNode, 1)
+// const res = removeNthFromEnd(listNode, 5)
+const res = removeNthFromEnd2(listNode, 5)
 console.log(res)

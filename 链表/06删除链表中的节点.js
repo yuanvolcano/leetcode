@@ -7,14 +7,14 @@ const deleteNode = function (head, node) {
   let nextNode, prevNode
   for (let [key, val] of map.entries()) {
     if (val === node) {
-      nextNode = val.next
-      continue
-    }
-    if (key === node) {
       prevNode = key
       continue
     }
-    if (nextNode && prevNode) break
+    if (key === node) {
+      nextNode = val
+      continue
+    }
+    if (nextNode !== void 0 && prevNode !== void 0) break
   }
   prevNode.next = nextNode
 }
