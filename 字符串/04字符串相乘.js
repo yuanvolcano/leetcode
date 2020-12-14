@@ -33,5 +33,25 @@ const multiply = function (num1, num2) {
 	return res.reverse().join('');
 }
 
-let res = multiply('111', '111')
+const multiply2 = function (str1, str2) {
+	const len1 = str1.length, len2 = str2.length
+	const result = new Array(len1 + len2).fill(0)
+	for (let i = len1 - 1; i >= 0; i--) {
+		for (let j = len2 - 1; j >=0; j--) {
+			const product = (str1[i] - 0) * (str2[j] - 0)
+			const p1 = i + j, p2 = i + j + 1
+			const sum = result[p2] + product
+			result[p2] = sum % 10
+			result[p1] += Math.floor(sum / 10)
+		}
+	}
+
+	while (result[0] === 0) {
+		result.shift()
+	}
+	const res = result.join('')
+	return res ? res : '0'
+}
+
+let res = multiply2('2', '3')
 console.log(res)
