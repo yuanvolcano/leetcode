@@ -27,18 +27,16 @@ const movesToMakeZigzag = function(nums) {
   let ans2 = 0
 
   while (i < len) {
-    // 奇数位大的锯齿，减偶数位
     if (i % 2 === 0) {
-      let diff1 = i > 0 && nums[i - 1] <= nums[i] ? nums[i] - (nums[i - 1] - 1) : 0
-      let diff2 = i < len - 1 && nums[i + 1] <= nums[i] ? nums[i] - (nums[i + 1] - 1) : 0
-
-      ans1 += Math.max(diff1, diff2)
-    } else {
-      // 偶数位大的锯齿，减奇数位
-      let diff1 = nums[i - 1] <= nums[i] ? nums[i] - (nums[i - 1] - 1) : 0
-      let diff2 = i < len - 1 && nums[i + 1] <= nums[i] ? nums[i] - (nums[i + 1] - 1) : 0
-
+      // 偶数索引
+      let diff1 = i > 0 && nums[i - 1] >= nums[i] ? nums[i - 1] - nums[i] + 1 : 0
+      let diff2 = i < len - 1 && nums[i + 1] >= nums[i] ? nums[i + 1] - nums[i] + 1 : 0
       ans2 += Math.max(diff1, diff2)
+    } else {
+      // 奇数索引
+      let diff1 = i > 0 && nums[i - 1] >= nums[i] ? nums[i - 1] - nums[i] + 1 : 0
+      let diff2 = i < len - 1 && nums[i + 1] >= nums[i] ? nums[i + 1] - nums[i] + 1 : 0
+      ans1 += Math.max(diff1, diff2)
     }
 
     i++
@@ -47,6 +45,6 @@ const movesToMakeZigzag = function(nums) {
   return Math.min(ans1, ans2)
 }
 
-const nums = [1, 2, 3]
+const nums = [1,2,3]
 const result = movesToMakeZigzag(nums)
 console.log(result)
