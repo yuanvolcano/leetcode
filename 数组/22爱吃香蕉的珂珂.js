@@ -7,17 +7,29 @@
 // 返回她可以在 H 小时内吃掉所有香蕉的最小速度 K（K 为整数）。
 
 const minEatingSpeed = function (piles, H) {
-  const minVal = Math.min(...piles)
+  const minVal = 1
   const maxVal = Math.max(...piles)
-  let val = minVal
+  // let val = minVal
   if (H === piles.length) return maxVal
-  while (val <= maxVal) {
-    if (checkValid(piles, H, val)) {
-      return val
+  // while (val <= maxVal) {
+  //   if (checkValid(piles, H, val)) {
+  //     return val
+  //   } else {
+  //     val++
+  //   }
+  // }
+  // 使用 二分查找
+  let right = maxVal, left = minVal
+  while (left < right) {
+    let middle = left + (right - left) / 2
+    if (!checkValid(piles, H, middle)) {
+      left = middle + 1
     } else {
-      val++
+      right = middle
     }
   }
+
+  return parseInt(left)
 }
 
 function checkValid (piles, h, val) {
@@ -35,6 +47,6 @@ function checkValid (piles, h, val) {
   return true
 }
 
-const piles = [30,11,23,4,20], H = 5
+const piles = [312884470], H = 312884469
 const result = minEatingSpeed(piles, H)
 console.log(result)
