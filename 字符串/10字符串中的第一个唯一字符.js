@@ -5,7 +5,7 @@
 
 var firstUniqChar = function(s) {
   const obj = {}
-  let index = - 1
+  let index = -1
   for (let i = 0, len = s.length; i < len; i++) {
     if (obj[s[i]] === void 0) {
       obj[s[i]] = i
@@ -23,6 +23,15 @@ var firstUniqChar = function(s) {
     }
   }
   return index
+}
+
+var firstUniqChar2 = function(s) {
+  for (let i = 0, len = s.length; i < len; i++) {
+    if (s.indexOf(s[i]) === s.lastIndexOf(s[i])) {
+      return i
+    }
+  }
+  return -1;
 }
 
 let res = firstUniqChar('cc')
