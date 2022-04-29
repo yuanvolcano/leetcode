@@ -18,7 +18,7 @@
  * @return {ListNode}
  */
 var reverseKGroup = function (head, k) {
-  let stack = [], source = head, curList, res
+  let stack = [], curList, res
   while (head) {
     if (!curList || curList.length >= k) {
       curList = []
