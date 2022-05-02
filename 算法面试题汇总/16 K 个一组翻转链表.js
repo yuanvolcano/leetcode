@@ -85,5 +85,9 @@ const head = {
 //   }
 // }
 
+const reverseKGroup2 = function (head, k) {
+
+}
+
 const result = reverseKGroup(head, 1)
 console.log(result)
