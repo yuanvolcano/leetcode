@@ -33,13 +33,15 @@ function travserInsert (node, val) {
 
   else if (node.val < val) {
     if (!node.right) {
-      node.right = new Node(null)
+      node.right = new Node(val)
+      return
     }
     travserInsert(node.right, val)
   }
   else {
     if (!node.left) {
-      node.left = new Node(null)
+      node.left = new Node(val)
+      return
     }
     travserInsert(node.left, val)
   }
@@ -65,7 +67,7 @@ Tree.prototype.delete = function (val) {
   }
 }
 
-const t = new Tree(5)
+const t = new Tree()
 // t.insert(5)
 t.insert(3)
 t.insert(6)
