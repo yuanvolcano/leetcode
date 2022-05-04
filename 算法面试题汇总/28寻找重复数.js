@@ -34,3 +34,14 @@ var findDuplicate2 = function (nums) {
   }
   return slow;
 };
+
+var findDuplicate3 = function (nums) {
+  for (let i = 0, len = nums.length; i < len; i++) {
+    while (nums[i] !== i) {
+      if (nums[i] === nums[nums[i]]) {
+        return nums[i]
+      }
+      [nums[nums[i]], nums[i]] = [nums[i], nums[nums[i]]]
+    }
+  }
+}

@@ -6,7 +6,7 @@ const coinChange = function (coins, amount) {
   const map = new Map()
   function fn (n) {
     if (n === 0) return 0
-    if (n < -1) return -1
+    if (n < 0) return -1
     if (map.has(n)) return map.get(n)
 
     let res = Infinity, preVal
@@ -22,6 +22,23 @@ const coinChange = function (coins, amount) {
   return fn(amount)
 }
 
-const result = coinChange([2], 3)
+const coinChange2 =  function (coins, amount) {
+  // 初始值为 amount + 1 ，因为凑成 amount 金额的硬币数最多只可能等于 amount（全用 1 元面值的硬币
+  const dp = new Array(amount + 1).fill(amount + 1)
+  // amout 为 0 时，硬币数为 0
+  dp[0] = 0
+  for (let i = 0, len = dp.length; i < len; i++) {
+    for (let coin of coins) {
+      if (i - coin < 0) {
+        continue
+      }
+      dp[i] = Math.min(dp[i], 1 + dp[i - coin]);
+    }
+  }
+
+  return dp[amount] === amount + 1 ? -1 : dp[amount]
+}
+
+const result = coinChange2([1, 2, 5], 11)
 console.log(result)
 
