@@ -27,6 +27,25 @@ var kthSmallest = function (root, k) {
   return list[k - 1]
 };
 
+var kthSmallest2 = function (root, k) {
+  let res = 0
+  let rank = 0
+  const traverse = (node) => {
+    if (!node) return
+
+    traverse(node.left)
+    rank++
+    if (rank === k) {
+      res = node.val
+      return
+    }
+    traverse(node.right)
+  }
+
+  traverse(root)
+  return res
+}
+
 const root = {
   val: 3,
   left: {
@@ -43,5 +62,5 @@ const root = {
   }
 }
 
-const result = kthSmallest(root, 1)
+const result = kthSmallest2(root, 1)
 console.log(result)
