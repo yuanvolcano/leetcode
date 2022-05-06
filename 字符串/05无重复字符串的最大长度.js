@@ -13,6 +13,26 @@ const lengthOfLongestSubstring = function (s) {
   return max
 }
 
+const lengthOfLongestSubstring2 = function (s) {
+  let left = 0, right = 0, char1 = '', char2, res = 0
+  const len = s.length, winObj = {}
+  while (right < len) {
+    char1 = s[right]
+    if (winObj[char1] === void 0) {
+      winObj[char1] = 0
+    }
+    winObj[char1]++
+    right++
+    while (winObj[char1] > 1) {
+      char2 = s[left]
+      winObj[char2]--
+      left++
+    }
+    res = Math.max(res, right - left)
+  }
+  return res
+}
+
 let str = 'abcaba'
-let res = lengthOfLongestSubstring(str)
+let res = lengthOfLongestSubstring2(str)
 console.log(res)
