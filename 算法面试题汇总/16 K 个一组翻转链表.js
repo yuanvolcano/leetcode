@@ -18,7 +18,7 @@
  * @return {ListNode}
  */
 var reverseKGroup = function (head, k) {
-  let stack = [], curList, res
+  let stack = [], curList
   while (head) {
     if (!curList || curList.length >= k) {
       curList = []
@@ -33,15 +33,42 @@ var reverseKGroup = function (head, k) {
   }
 
   stack = stack.flat()
-  res = head = stack.shift()
-  while (head && stack.length) {
-    head.next = stack.shift()
-    head = head.next
-    head.next = null
+  let res = new ListNode(0), temp = res
+  while (stack.length) {
+    temp.next = new ListNode(stack.shift())
+    temp = temp.next
   }
 
-  return res
+  return res.next
 };
+
+
+// 反转前 [a, b) 之间的链表
+var reverse = function (a, b) {
+  let pre = null, cur = a, next
+  while (cur !== b) {
+    next = cur.next
+    cur.next = pre
+    pre = cur
+    cur = next
+  }
+  // 返回反转后的头结点
+  return pre
+}
+
+var reverseKGroup = function (head, k) {
+  let a = head, b = head
+  for (let i = 0; i < k; i++) {
+    // 不足 k 个返回头结点
+    if (b == null) return head
+    b = b.next
+  }
+  // 反转前 k 个元素
+  let newHead = reverse(a, b)
+  // 递归反转后续链表并连接起来
+  a.next = reverseKGroup(b, k)
+  return newHead
+}
 
 // const head = {
 //   val: 1,

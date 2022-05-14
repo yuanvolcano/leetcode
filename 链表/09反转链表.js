@@ -14,24 +14,16 @@ function ListNode(val, next) {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function (head) {
-  const listNode = new ListNode(0)
-  const orderList = []
-  while (head) {
-    orderList.push({
-      val: head.val,
-      next: null
-    })
-    head = head.next
+const reverseList = function (head) {
+  if (head === null || head.next === null) {
+    return head
   }
 
-  let temp = listNode
-  while (orderList.length) {
-    temp.next = orderList.pop()
-    temp = temp.next
-  }
-  return listNode.next
-};
+  let newHead = reverseList(head.next)
+  head.next.next = head
+  head.next = null
+  return newHead
+}
 
 const reverseList2 = function (head) {
   let pre = null

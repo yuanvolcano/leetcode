@@ -15,12 +15,12 @@ const hasCycle = function (head) {
 
 // map 标记法
 var hasCycle2 = (head) => {
-  if(!head || !head.next) return false
+  if (!head || !head.next) return false
   let map = new Map()
   while (head) {
-      if (map.has(head)) return true
-      map.set(head, true)
-      head = head.next
+    if (map.has(head)) return true
+    map.set(head, true)
+    head = head.next
   }
   return false
 }
