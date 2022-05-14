@@ -52,11 +52,42 @@ const threeSum2 = function (nums) {
   return res
 }
 
+// 双指针
+const twoSum = function (nums, start, target) {
+  let len = nums.length, left = start, right = len - 1
+  while (left < right) {
+    let sum = nums[left] + nums[right]
+    if (sum > target) {
+      right--
+    } else if (sum < target) {
+      left++
+    } else {
+      return [nums[left], nums[right]]
+    }
+  }
+  return []
+}
+
+const threeSum3 = function (nums, target) {
+  nums.sort((a, b) => a - b)
+  let len = nums.length, res = []
+  for (let i = 0; i < len - 2;) {
+    const list = twoSum(nums, i + 1, target - nums[i])
+    if (list.length) {
+      list.unshift(nums[i])
+      res.push(list)
+    }
+    while (nums[i++] === nums[i]) {}
+  }
+}
+
 // let nums = [-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0]
 // let nums = [-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6]
 // let nums = [0,2,2,3,0,1,2,3,-1,-4,2]
 let nums = [0, 0, 0, 0, 0, -5, 5]
-let res1 = threeSum(nums)
-let res2 = threeSum(nums)
-console.log(res1)
-console.log(res2)
+// let res1 = threeSum(nums)
+// let res2 = threeSum(nums)
+let res3 = threeSum3(nums, 0)
+// console.log(res1)
+// console.log(res2)
+console.log(res3)

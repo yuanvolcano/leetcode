@@ -13,6 +13,23 @@ const twoSum = function(nums, target) {
   return []
 }
 
+// 双指针
+const twoSum2 = function(nums, target) {
+  nums.sort((a, b) => a - b)
+  let len = nums.length, left = 0, right = len - 1
+  while (left < right) {
+    let sum = nums[left] + nums[right]
+    if (sum > target) {
+      right--
+    } else if (sum < target) {
+      left++
+    } else {
+      return [left, right]
+    }
+  }
+  return []
+}
+
 let nums = [2, 7, 11, 15], target = 9
 let res = twoSum(nums, target)
 console.log(res)
