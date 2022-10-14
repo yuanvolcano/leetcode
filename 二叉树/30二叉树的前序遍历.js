@@ -84,5 +84,5 @@ const root = {
 }
 
 // const result = preTraversal(root)
-const result = preTraversal3(root)
+const result = preTraversal2(root)
 console.log(result)

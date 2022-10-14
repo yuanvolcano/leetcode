@@ -25,3 +25,15 @@ var invertTree = function (root) {
   traverse(root)
   return root
 };
+
+var invertTree2 = function(root) {
+  if (root === null) {
+      return null;
+  }
+
+  const leftTemp = root.left;
+  root.left = invertTree(root.right);
+  root.right = invertTree(leftTemp);
+
+  return root;
+};

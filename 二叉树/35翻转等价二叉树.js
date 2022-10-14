@@ -12,7 +12,7 @@
  */
 var flipEquiv = function (root1, root2) {
   if (!((!root1 && !root2) ||
-    (root1 && root2 && root1.val === root2.val))
+    (root1 && root2 && root1.val !== root2.val))
   ) {
     return false
   } else if (!root1 && !root2) {

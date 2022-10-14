@@ -15,3 +15,22 @@ const isValidBST = function(root) {
 function tree2Arr(root) {
   return root ? tree2Arr(root.left).concat(root.val, tree2Arr(root.right)) : []
 }
+
+// 通过中序遍历构造成一个有序列表
+const isValidBST = function(root) {
+  const arr = [];
+  const inorderTraverse = (node) => {
+    if (!node) {
+      return null
+    }
+    inorderTraverse(node.left);
+    arr.push(node.val);
+    inorderTraverse(node.right);
+  }
+  inorderTraverse(root);
+
+  for (let i = 0, len = arr.length - 1; i < len; i++) {
+    if (arr[i + 1] <= arr[i]) return false;
+  }
+  return true;
+}

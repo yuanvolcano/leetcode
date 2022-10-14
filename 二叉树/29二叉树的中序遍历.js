@@ -75,5 +75,5 @@ const root = {
   }
 }
 
-// const result1 = inorderTraversal(root)
-// console.log(result1)
+const result1 = inorderTraversal(root)
+console.log(result1)

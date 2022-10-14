@@ -34,3 +34,23 @@ var connect = function (root) {
 
   return root
 };
+
+// 采用三叉树
+var connect2 = function (root) {
+  const traverse = (node1, node2) => {
+    if (!node1 || !node2) {
+      return;
+    }
+    node1.left = node2.right;
+
+    traverse(node1.left, node1.right);
+    traverse(node2.left, node2.right);
+    traverse(node1.right, node1.left);
+  }
+
+  if (!root) {
+    return root;
+  }
+  traverse(root.left, root.right);
+  return root;
+}

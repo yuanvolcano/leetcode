@@ -10,3 +10,28 @@
 
 //  输入：t1 = [1, null, 2, 4], t2 = [3, 2]
 //  输出：false
+
+var checkSubTree = function (t1, t2) {
+  const rootFlag = traverse(t1, t2);
+
+  let leftFlag = false, rightFlag = false;
+
+  if (t1.left) {
+    leftFlag = checkSubTree(t1.left, t2);
+  }
+  if (t1.right) {
+    rightFlag = checkSubTree(t1.right, t2);
+  }
+  return rootFlag || leftFlag || rightFlag;
+};
+
+function traverse(node1, node2) {
+  if (!node1 && !node2) {
+    return true;
+  } else if (!node1 || !node2) {
+    return false;
+  } else if (node1.val !== node2.val) {
+    return false;
+  }
+  return traverse(node1.left, node2.left) && traverse(node1.right, node2.right);
+}s
