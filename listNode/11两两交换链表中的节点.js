@@ -17,7 +17,7 @@ var swapPairs = function (head) {
   let source = head, pre
   while (head) {
     pre = head.val
-    if (head.next && head.next.val) {
+    if (head.next) {
       head.val = head.next.val
       head.next.val = pre
       head = head.next.next

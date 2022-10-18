@@ -16,27 +16,43 @@ function ListNode(val, next) {
  */
 const reverseList = function (head) {
   if (head === null || head.next === null) {
-    return head
+    return head;
   }
 
-  let newHead = reverseList(head.next)
-  head.next.next = head
-  head.next = null
-  return newHead
+  let newHead = reverseList(head.next);
+  head.next.next = newHead;
+  head.next = null;
+  return newHead;
 }
 
 const reverseList2 = function (head) {
-  let pre = null
-  let curr = head
+  let pre = null;
+  let curr = head;
   while (curr) {
-    const next = curr.next
-    curr.next = pre
-    pre = curr
-    curr = next
+    const next = curr.next;
+    curr.next = pre;
+    pre = curr;
+    curr = next;
   }
 
-  return pre
+  return pre;
 }
+
+var reverseList3 = function (head) {
+  const dummy = new ListNode(-1);
+  let p = dummy;
+  const traverse = (list) => {
+    if (!list) {
+      return;
+    }
+    traverse(list.next);
+    p.next = list;
+    list.next = null;
+    p = p.next;
+  }
+  traverse(head);
+  return dummy.next;
+};
 
 const head1 = {
   val: 2,

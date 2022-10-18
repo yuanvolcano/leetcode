@@ -1,5 +1,4 @@
 // 对链表进行插入排序。
-
 const insertionSortList = function (head) {
   let last = null, source = head
   // 改造成双向链表

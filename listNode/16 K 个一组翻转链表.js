@@ -18,28 +18,29 @@
  * @return {ListNode}
  */
 var reverseKGroup = function (head, k) {
-  let stack = [], curList
+  const stack = [], res = new ListNode(0);
+  let curList = null, temp = res;;
   while (head) {
     if (!curList || curList.length >= k) {
-      curList = []
-      stack.push(curList)
+      curList = [];
+      stack.push(curList);
     }
-    curList.unshift(head)
-    head = head.next
+    curList.unshift(head);
+    head = head.next;
   }
 
-  if (stack[stack.length - 1] && stack[stack.length - 1].length !== k) {
-    stack[stack.length - 1].reverse()
+  const stackLen = stack.length - 1;
+  if (stack[stackLen] && stack[stackLen].length !== k) {
+    stack[stackLen].reverse();
   }
 
-  stack = stack.flat()
-  let res = new ListNode(0), temp = res
+  stack = stack.flat();
   while (stack.length) {
-    temp.next = new ListNode(stack.shift())
-    temp = temp.next
+    temp.next = new ListNode(stack.shift());
+    temp = temp.next;
   }
 
-  return res.next
+  return res.next;
 };
 
 

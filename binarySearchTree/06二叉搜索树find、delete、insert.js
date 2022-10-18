@@ -26,23 +26,14 @@ Tree.prototype.insert = function (val) {
 }
 
 function travserInsert(node, val) {
-  if (node.val === null) {
-    return node.val = val
+  if (node === null) {
+    return new Node(val);
   }
-  if (node.val === val) return
-
-  else if (node.val < val) {
-    if (!node.right) {
-      node.right = new Node(val)
-      return
-    }
+  if (node.val === val) {
+    return;
+  } else if (node.val < val) {
     travserInsert(node.right, val)
-  }
-  else {
-    if (!node.left) {
-      node.left = new Node(val)
-      return
-    }
+  } else {
     travserInsert(node.left, val)
   }
 }

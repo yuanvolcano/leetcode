@@ -20,12 +20,12 @@ class LRUCache  {
     if (this.cache.has(key)) {
       this.keys.delete(key)
     }
-    this.cache.set(key, val)
-    this.keys.add(key)
     if (this.keys.size > this.capacity) {
       const removedKey = this.keys.values().next().value
       this.delete(removedKey)
     }
+    this.keys.add(key)
+    this.cache.set(key, val)
   }
 }
 

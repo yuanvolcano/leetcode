@@ -23,30 +23,29 @@
  * @return {ListNode}
  */
 const addTwoNumbers = function(l1, l2) {
-  let num1, num2, sum, result = null, temp = 0, curNode
+  let num1, num2, sum, temp = 0, result = curNode = new ListNode(0);
+
   while (l1 || l2 || temp) {
-    num1 = l1 ? ~~l1.val : 0
-    num2 = l2 ? ~~l2.val : 0
-    sum = num1 + num2 + temp
-    if (result === null) {
-      curNode = result = new listNode(sum % 10)
-    } else if (curNode.next === null) {
-      curNode.next = new listNode(sum % 10)
-      curNode = curNode.next
-    }
-    temp = sum > 9 ? 1 : 0
+    num1 = l1 ? ~~l1.val : 0;
+    num2 = l2 ? ~~l2.val : 0;
+    sum = num1 + num2 + temp;
+    curNode.next = new ListNode(sum % 10);
+    curNode = curNode.next;
+    temp = sum > 9 ? 1 : 0;
+
     if (l1) {
       l1 = l1.next
     }
+
     if (l2) {
       l2 = l2.next
     }
   }
 
-  return result
+  return result.next;
 }
 
-function listNode (val) {
+function ListNode (val) {
   this.val = val
   this.next = null
 }

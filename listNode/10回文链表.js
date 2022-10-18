@@ -9,6 +9,8 @@
  * @param {ListNode} head
  * @return {boolean}
  */
+
+// 先遍历构造一条反方向链表，然后逐一对比
 var isPalindrome = function (head) {
   const head2 = reverseList(head)
   let temp1 = head
@@ -47,6 +49,7 @@ var reverseList = function (head) {
   return listNode.next
 };
 
+// 利用字符串回文特性
 var isPalindrom2 = function (head) {
   if (!head) {
     return true
@@ -58,6 +61,20 @@ var isPalindrom2 = function (head) {
   }
   return s.split('').reverse().join('') === s
 };
+
+var isPalindrom3 = function(head) {
+  let left = head;
+  const traverse = (right) => {
+    if (!right) {
+      return true;
+    }
+    let res = traverse(right.next);
+    res = res && right.val === left.val;
+    left = left.next;
+    return res;
+  }
+  return traverse(head);
+}
 
 const head = {
   val: 1,
