@@ -41,7 +41,7 @@ var connect2 = function (root) {
     if (!node1 || !node2) {
       return;
     }
-    node1.left = node2.right;
+    node1.next = node2;
 
     traverse(node1.left, node1.right);
     traverse(node2.left, node2.right);

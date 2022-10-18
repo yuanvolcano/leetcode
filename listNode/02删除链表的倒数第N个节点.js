@@ -47,19 +47,23 @@ const removeNthFromEnd = function (head, n) {
 }
 
 const removeNthFromEnd2 = function (head, n) {
-  let first = 0, target = source = head
-  while (first <= n) {
-    head = head.next
-    first++
+  let start = 0, fast = slow = head;
+  while (start <= n) {
+    if (fast === null) {
+      return head.next;
+    }
+    fast = fast.next
+    start++;
   }
-  while (head) {
-    target = target.next
-    head = head.next
+
+  while (fast) {
+    fast = fast.next
+    slow = slow.next
   }
-  if (target && target.next) {
-    target.next = target.next.next
+  if (slow && slow.next) {
+    slow.next = slow.next.next;
   }
-  return source
+  return head;
 }
 
 const listNode = {
