@@ -33,7 +33,7 @@ LFUCache.prototype.get = function (key) {
     let count = this.keyToCount.get(key);
     this.keyToCount.set(key, count + 1);
     // countToKeys 中删除 count 对应的 key，并把 key 设置到 count + 1 中
-    const keys = this.countToKeys.get(count)
+    const keys = this.countToKeys.get(count);
     keys.delete(key);
     // 如果次数 keys 长度为 0，从 keyToCount 中删除
     if (keys.size === 0) {
