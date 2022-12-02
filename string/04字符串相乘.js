@@ -53,5 +53,5 @@ const multiply2 = function (str1, str2) {
 	return res ? res : '0'
 }
 
-let res = multiply2('2', '3')
+let res = multiply2('24', '36')
 console.log(res)

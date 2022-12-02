@@ -10,24 +10,23 @@
 
 const compress = function(chars) {
   let res = []
-  let temp = '', size = 1
+  let temp = '', size = 0;
   for (let i =0, len = chars.length; i < len; i++) {
     if (temp !== chars[i]) {
+      if (size !== 0) {
+        res.push(size);
+      }
       temp = chars[i]
       size = 1
       res.push(temp)
     } else {
-      if (size > 1) {
-        res.pop()
-      }
       size++
-      res.push(size)
     }
   }
-  console.log(res)
+  res.push(size);
   return res.join('').split('')
 }
 
-let list = ["a","a","b","b","c","c","c"]
+let list = ["a","a","b","b","c","c","c", "d"]
 let res = compress(list)
 console.log(res)

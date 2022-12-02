@@ -2,11 +2,13 @@ const listTransferTree2 = function (list) {
   const idMap = new Map(), tree = []
   for (const item of list) {
     idMap.set(item.code, item)
-    item.children = []
   }
   for (const item of list) {
     const parent = idMap.get(item.parentCode)
     if (parent) {
+      if (!parent.children) {
+        parent.children = [];
+      }
       parent.children.push(item)
     } else {
       tree.push(item)

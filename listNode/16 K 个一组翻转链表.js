@@ -17,7 +17,7 @@
  * @param {number} k
  * @return {ListNode}
  */
-var reverseKGroup = function (head, k) {
+var reverseKGroup2 = function (head, k) {
   const stack = [], res = new ListNode(0);
   let curList = null, temp = res;;
   while (head) {
@@ -90,32 +90,6 @@ var reverseKGroup = function (head, k) {
 //     }
 //   }
 // }
-
-const head = {
-  val: 1,
-  next: {
-    val: 2,
-    next: null
-  }
-}
-
-// const head = {
-//   val: 1,
-//   next: {
-//     val: 2,
-//     next: {
-//       val: 3,
-//       next: {
-//         val: 4,
-//         next: null
-//       }
-//     }
-//   }
-// }
-
-const reverseKGroup2 = function (head, k) {
-
-}
 
 const result = reverseKGroup(head, 1)
 console.log(result)

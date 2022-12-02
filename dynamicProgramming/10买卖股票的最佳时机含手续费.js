@@ -57,5 +57,5 @@ var maxProfit2 = function (prices, fee) {
 }
 
 const prices = [1,3,7,5,10,3], fee = 3
-const result = maxProfit2(prices, fee)
+const result = maxProfit(prices, fee)
 console.log(result)

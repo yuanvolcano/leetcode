@@ -31,7 +31,7 @@ function checkPalindrome(childStr) {
 }
 
 // 以 [left, right] 为中心的最长子串
-function checkPalindrome(s, left, right) {
+function checkPalindrome2(s, left, right) {
   while (left >= 0 && right < s.length && s[left] === s[right]) {
     left--
     right++
@@ -43,9 +43,9 @@ const longestPalindrome2 = function (s) {
   let res = ''
   for (let i = 0, len = s.length; i < len; i++) {
     // 以 s[i] 为中心的最长回文子串
-    let s1 = checkPalindrome(s, i, i)
+    let s1 = checkPalindrome2(s, i, i)
     // 以 s[i] 和 s[i+1] 为中心的最长回文子串
-    let s2 = checkPalindrome(s, i, i + 1)
+    let s2 = checkPalindrome2(s, i, i + 1)
     res = res.length > s1.length ? res : s1
     res = res.length > s2.length ? res : s2
   }

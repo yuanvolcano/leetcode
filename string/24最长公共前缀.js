@@ -20,7 +20,7 @@ const longestCommonPrefix = function(strs) {
   return _findSameStart(1)
 };
 
-const longestCommonPrefix = function (strs) {
+const longestCommonPrefix2 = function (strs) {
   if (!strs.length) return ''
   let ants = strs[0]
   const len = strs.length
@@ -32,7 +32,7 @@ const longestCommonPrefix = function (strs) {
         break
       }
     }
-    ants.slice(0, j)
+    ants = ants.slice(0, j)
     if (!ants) return ants
   }
   return ants
@@ -41,5 +41,5 @@ const longestCommonPrefix = function (strs) {
 let arr1 = ["flower","flow","flight"]
 let arr2 = ["dog","racecar","car"]
 let arr3 = ['a']
-let ret = longestCommonPrefix(arr3)
+let ret = longestCommonPrefix2(arr2)
 console.log(ret)

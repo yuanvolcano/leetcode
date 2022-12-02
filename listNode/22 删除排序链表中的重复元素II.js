@@ -32,9 +32,7 @@ var deleteDuplicates = function (head) {
     fast = fast.next;
   }
 
-  if (!isRepeat) {
-    temp.next = slow;
-  } else {
+  if (isRepeat) {
     temp.next = null;
   }
 
