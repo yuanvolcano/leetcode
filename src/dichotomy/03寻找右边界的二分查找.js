@@ -1,13 +1,13 @@
 const searchRight = function (nums, target) {
-  let left = 0, right = nums.length - 1, mid
+  let left = 0, right = nums.length - 1;
   while (left <= right) {
-    mid = left + Math.floor((right - left) / 2)
+    let mid = left + (right - left) >> 1;
     if (nums[mid] === target) {
-      left = mid + 1
+      left = mid + 1;
     } else if (nums[mid] > target) {
-      right = mid - 1
+      right = mid - 1;
     } else if (nums[mid] < target) {
-      left = mid + 1
+      left = mid + 1;
     }
   }
 
@@ -16,19 +16,19 @@ const searchRight = function (nums, target) {
 }
 
 const searchRight2 = function (nums, target) {
-  let left = 0, right = nums.length, mid
+  let left = 0, right = nums.length;
   while (left < right) {
-    mid = left + Math.floor((right - left) / 2)
+    let mid = left + (right - left) >> 1;
     if (nums[mid] === target) {
-      left = mid + 1
+      left = mid + 1;
     } else if (nums[mid] > target) {
-      right = mid
+      right = mid;
     } else if (nums[mid] < target) {
-      left = mid + 1
+      left = mid + 1;
     }
   }
 
-  if (left == 0) return -1
+  if (left == 0) return -1;
 
-  return nums[left - 1] == target ? (left - 1) : -1
+  return nums[left - 1] == target ? (left - 1) : -1;
 }

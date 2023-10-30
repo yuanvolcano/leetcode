@@ -31,7 +31,8 @@ LFUCache.prototype.get = function (key) {
   if (this.caches.has(key)) {
     // keyToCount 中 count + 1
     let count = this.keyToCount.get(key);
-    this.keyToCount.set(key, count + 1);
+    let newCount = count + 1;
+    this.keyToCount.set(key, newCount);
     // countToKeys 中删除 count 对应的 key，并把 key 设置到 count + 1 中
     const keys = this.countToKeys.get(count);
     keys.delete(key);
@@ -42,7 +43,6 @@ LFUCache.prototype.get = function (key) {
         this.minFreq++;
       }
     }
-    let newCount = count + 1;
     let newCountKeys = this.countToKeys.get(newCount) || new Set();
     newCountKeys.add(key);
     this.countToKeys.set(newCount, newCountKeys);
