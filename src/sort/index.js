@@ -1,11 +1,8 @@
-const insertSort = require('./03insert')
-const quickSort = require('./04quick')
-const mergeSort = require('./06merge')
-const countingSort = require('./08counting')
+import { quickSort, quickSort2 } from './04quick.js';
 
 const arr = []
 for (let i = 0; i < 1000000; i++) {
-  arr.push(Math.ceil(Math.random() * 10000000))
+  arr.push(Math.ceil(Math.random() * 1000000))
 }
 
 // const arr1 = JSON.parse(JSON.stringify(arr))
@@ -16,14 +13,14 @@ const arr4 = JSON.parse(JSON.stringify(arr))
 // insertSort(arr1)
 // console.timeEnd('insert')
 
-console.time('quick')
+console.time('quick1')
 quickSort(arr2)
-console.timeEnd('quick')
+console.timeEnd('quick1')
 
 // console.time('merge')
 // mergeSort(arr3)
 // console.timeEnd('merge')
 
-console.time('count')
-countingSort(arr4)
-console.timeEnd('count')
+console.time('quick1')
+quickSort2(arr4)
+console.timeEnd('quick1')

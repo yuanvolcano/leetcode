@@ -1,13 +1,13 @@
-class Node {
+class TreeNode {
   constructor(val) {
-    this.val = val !== void 0 ? val : null
-    this.left = null
-    this.right = null
+    this.val = val !== void 0 ? val : null;
+    this.left = null;
+    this.right = null;
   }
 }
 
 function Tree(val) {
-  this.root = new Node(val)
+  this.root = null;
 }
 
 Tree.prototype.find = function (val) {
@@ -31,7 +31,7 @@ function traverseInsert(node, val, parent, key) {
   }
 
   if (node.val === val) {
-    return;
+    return node;
   } else if (node.val < val) {
     traverseInsert(node.right, val, node, 'right');
   } else {
@@ -40,29 +40,32 @@ function traverseInsert(node, val, parent, key) {
 }
 
 Tree.prototype.delete = function (val) {
-  let node = this.find(val)
-  if (!node) return this.root
+  let node = this.find(val);
+  if (node === null) {
+    return this.root;
+  }
+
   if (!node.left && !node.right) {
-    node.val = null
+    node.val = null;
   } else if (node.left) {
-    node = node.left
+    node = node.left;
   } else if (node.right) {
-    node = node.right
+    node = node.right;
   } else {
     // 左分支的最右侧节点
-    let left = node.left
+    let left = node.left;
     while (left.right) {
-      left = left.right
+      left = left.right;
     }
-    const lastVal = left.val
+    const lastVal = left.val;
     // 有分支的最左侧节点
     // let right = node.right
     // while (right.left) {
     //   right = right.left
     // }
     // const lastVal = right.val
-    this.delete(lastVal)
-    node.val = lastVal
+    this.delete(lastVal);
+    node.val = lastVal;
   }
 }
 

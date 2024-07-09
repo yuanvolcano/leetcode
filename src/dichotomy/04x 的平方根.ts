@@ -17,14 +17,12 @@ function mySqrt(x: number): number {
   let left = 0, right = x;
   let res = -1;
   while (left <= right) {
-    let mid = Math.floor(left + (right - left) / 2);
+    let mid = left + (right - left) >> 1;
     const powerVal = mid * mid;
-    if (powerVal === x) {
-      return mid;
-    } else if (powerVal < x) {
+    if (powerVal <= x) {
       res = mid;
       left = mid + 1;
-    } else if (powerVal > x) {
+    } else {
       right = mid - 1;
     }
   }
