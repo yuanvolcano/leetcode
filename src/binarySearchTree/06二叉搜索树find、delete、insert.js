@@ -11,30 +11,31 @@ function Tree(val) {
 }
 
 Tree.prototype.find = function (val) {
-  return travser(this.root, val)
+  return traverse(this.root, val)
 }
 
-function travser(node, val) {
+function traverse(node, val) {
   if (!node) return null
   if (node.val === val) return node
-  else if (node.val < val) return travser(node.right, val)
-  else if (node.val > val) return travser(node.left, val)
+  else if (node.val < val) return traverse(node.right, val)
+  else if (node.val > val) return traverse(node.left, val)
 }
 
 Tree.prototype.insert = function (val) {
-  travserInsert(this.root, val)
+  traverseInsert(this.root, val)
 }
 
-function travserInsert(node, val) {
-  if (node === null) {
-    return new Node(val);
+function traverseInsert(node, val, parent, key) {
+  if (node === null || node.val === null) {
+    return node = new Node(val);
   }
+
   if (node.val === val) {
     return;
   } else if (node.val < val) {
-    travserInsert(node.right, val)
+    traverseInsert(node.right, val, node, 'right');
   } else {
-    travserInsert(node.left, val)
+    traverseInsert(node.left, val, node, 'left');
   }
 }
 
@@ -65,7 +66,7 @@ Tree.prototype.delete = function (val) {
   }
 }
 
-const t = new Tree()
+const t = new Tree();
 // t.insert(5)
 t.insert(3)
 t.insert(6)
