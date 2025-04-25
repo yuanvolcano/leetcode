@@ -11,7 +11,7 @@ const searchRight = function (nums, target) {
     }
   }
 
-  if (right < 0 || nums[right] !== target) return -1
+  if (right >= nums.length || right < 0 || nums[right] !== target) return -1
   return right
 }
 
