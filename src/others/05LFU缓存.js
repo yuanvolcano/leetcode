@@ -11,99 +11,121 @@
 
 // 函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
 
+class Node {
+  constructor(key, value) {
+    this.key = key;
+    this.value = value;
+    this.freq = 1;
+    this.prev = null;
+    this.next = null;
+  }
+}
 
-/**
- * @param {number} capacity
- */
-var LFUCache = function (capacity) {
-  this.capacity = capacity;
-  this.keyToCount = new Map();
-  this.countToKeys = new Map();
-  this.caches = new Map();
-  this.minFreq = Number.MAX_SAFE_INTEGER;
-};
+class DoublyLinkedList {
+  constructor() {
+    this.head = new Node();
+    this.tail = new Node();
+    this.head.next = this.tail;
+    this.tail.prev = this.head;
+    this.size = 0;
+  }
 
-/**
- * @param {number} key
- * @return {number}
- */
-LFUCache.prototype.get = function (key) {
-  if (this.caches.has(key)) {
-    // keyToCount 中 count + 1
-    let count = this.keyToCount.get(key);
-    let newCount = count + 1;
-    this.keyToCount.set(key, newCount);
-    // countToKeys 中删除 count 对应的 key，并把 key 设置到 count + 1 中
-    const keys = this.countToKeys.get(count);
-    keys.delete(key);
-    // 如果次数 keys 长度为 0，从 keyToCount 中删除
-    if (keys.size === 0) {
-      this.countToKeys.delete(count);
-      if (this.minFreq === count) {
+  addToHead(node) {
+    node.next = this.head.next;
+    node.prev = this.head;
+    this.head.next.prev = node;
+    this.head.next = node;
+    this.size++;
+  }
+
+  removeNode(node) {
+    node.prev.next = node.next;
+    node.next.prev = node.prev;
+    this.size--;
+  }
+
+  removeTail() {
+    if (this.size === 0) return null;
+    const node = this.tail.prev;
+    this.removeNode(node);
+    return node;
+  }
+}
+
+class LFUCache {
+  constructor(capacity) {
+    this.capacity = capacity;
+    this.size = 0;
+    this.minFreq = 0;
+    this.keyToNode = new Map();
+    this.freqToDLL = new Map();
+  }
+
+  get(key) {
+    if (!this.keyToNode.has(key)) {
+      return -1;
+    }
+
+    const node = this.keyToNode.get(key);
+    this.updateFreq(node);
+    return node.value;
+  }
+
+  put(key, value) {
+    if (this.capacity === 0) return;
+
+    if (this.keyToNode.has(key)) {
+      const node = this.keyToNode.get(key);
+      node.value = value;
+      this.updateFreq(node);
+    } else {
+      if (this.size === this.capacity) {
+        const dll = this.freqToDLL.get(this.minFreq);
+        const node = dll.removeTail();
+        this.keyToNode.delete(node.key);
+        this.size--;
+      }
+
+      const node = new Node(key, value);
+      this.keyToNode.set(key, node);
+      this.addToFreqList(node);
+      this.minFreq = 1;
+      this.size++;
+    }
+  }
+
+  updateFreq(node) {
+    const dll = this.freqToDLL.get(node.freq);
+    dll.removeNode(node);
+
+    if (dll.size === 0) {
+      this.freqToDLL.delete(node.freq);
+      if (this.minFreq === node.freq) {
         this.minFreq++;
       }
     }
-    let newCountKeys = this.countToKeys.get(newCount) || new Set();
-    newCountKeys.add(key);
-    this.countToKeys.set(newCount, newCountKeys);
-    return this.caches.get(key);
-  }
-  return -1;
-};
 
-/**
- * @param {number} key
- * @param {number} value
- * @return {void}
- */
-LFUCache.prototype.put = function (key, value) {
-  if (this.capacity === 0) {
-    return;
+    node.freq++;
+    this.addToFreqList(node);
   }
-  if (this.caches.has(key)) {
-    this.caches.set(key, value);
-    let count = this.keyToCount.get(key);
-    let keys = this.countToKeys.get(count);
-    keys.delete(key);
-    if (keys.size === 0) {
-      this.countToKeys.delete(count);
-      if (this.minFreq === count) {
-        this.minFreq++;
-      }
-    }
-    let newCount = count + 1;
-    this.keyToCount.set(key, newCount);
-    let newCountKeys = this.countToKeys.get(newCount) || new Set();
-    newCountKeys.add(key);
-    this.countToKeys.set(newCount, newCountKeys);
-  } else {
-    if (this.caches.size >= this.capacity) {
-      // 取频次最小的那个
-      const minFreq = this.minFreq;
-      const keys = this.countToKeys.get(minFreq);
-      const deletedKey = keys.values().next().value;
-      keys.delete(deletedKey);
-      if (keys.size === 0) {
-        this.countToKeys.delete(minFreq);
-        // 后面会处理 this.minFreq，this.minFreq 最小为 1，当 this.caches.has(key) 为 false，this.minFreq 必然为 1.
-      }
-      // 处理 keyToCount 和 caches
-      this.keyToCount.delete(deletedKey);
-      this.caches.delete(deletedKey);
-    }
-    let count = 1;
-    this.caches.set(key, value);
-    this.keyToCount.set(key, count);
-    let countToKeys = this.countToKeys.get(count) || new Set();
-    countToKeys.add(key);
-    this.countToKeys.set(count, countToKeys);
-    this.minFreq = Math.min(count, this.minFreq);
-  }
-};
 
-/**
- * Your LFUCache object will be instantiated and called as such:
- * var obj = new LFUCache(capacity)
- * var param_1 = obj.get(key)
- * obj.put(key,value)
- */
+  addToFreqList(node) {
+    if (!this.freqToDLL.has(node.freq)) {
+      this.freqToDLL.set(node.freq, new DoublyLinkedList());
+    }
+    this.freqToDLL.get(node.freq).addToHead(node);
+  }
+}
+
+// 测试用例
+const lfu = new LFUCache(2);
+lfu.put(1, 1);
+lfu.put(2, 2);
+console.log(lfu.get(1));      // 返回 1
+lfu.put(3, 3);               // 移除键 2
+console.log(lfu.get(2));      // 返回 -1（未找到）
+console.log(lfu.get(3));      // 返回 3
+lfu.put(4, 4);               // 移除键 1
+console.log(lfu.get(1));      // 返回 -1（未找到）
+console.log(lfu.get(3));      // 返回 3
+console.log(lfu.get(4));      // 返回 4
