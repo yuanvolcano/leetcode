@@ -31,21 +31,21 @@ function searchFirstGreaterThanOrEqualTo(nums, target) {
 
 // 测试用例
 const testCases = [
-    { nums: [1, 3, 5, 7, 9], target: 5, expected: 2 },
-    { nums: [1, 3, 5, 7, 9], target: 4, expected: 2 },
-    { nums: [1, 3, 5, 7, 9], target: 10, expected: -1 },
-    { nums: [1, 3, 3, 5, 7, 9], target: 3, expected: 1 },
-    { nums: [], target: 1, expected: -1 },
-    { nums: [1, 2, 3], target: 0, expected: 0 }
+  { nums: [1, 3, 5, 7, 9], target: 5, expected: 2 },
+  { nums: [1, 3, 5, 7, 9], target: 4, expected: 2 },
+  { nums: [1, 3, 5, 7, 9], target: 10, expected: -1 },
+  { nums: [1, 3, 3, 5, 7, 9], target: 3, expected: 1 },
+  { nums: [], target: 1, expected: -1 },
+  { nums: [1, 2, 3], target: 0, expected: 0 },
 ];
 
 // 运行测试用例
 testCases.forEach(({ nums, target, expected }, index) => {
-    const result = searchFirstGreaterThanOrEqualTo(nums, target);
-    console.log(`测试用例 ${index + 1}:`);
-    console.log(`输入: nums = [${nums}], target = ${target}`);
-    console.log(`预期输出: ${expected}`);
-    console.log(`实际输出: ${result}`);
-    console.log(`测试结果: ${result === expected ? '通过' : '失败'}`);
-    console.log('-------------------');
+  const result = searchFirstGreaterThanOrEqualTo(nums, target);
+  console.log(`测试用例 ${index + 1}:`);
+  console.log(`输入: nums = [${nums}], target = ${target}`);
+  console.log(`预期输出: ${expected}`);
+  console.log(`实际输出: ${result}`);
+  console.log(`测试结果: ${result === expected ? '通过' : '失败'}`);
+  console.log('-------------------');
 });

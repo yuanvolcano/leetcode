@@ -1,15 +1,35 @@
-lockfileVersion: 5.4
+lockfileVersion: '9.0'
 
-specifiers:
-  typescript: ^5.2.2
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
-dependencies:
-  typescript: 5.2.2
+importers:
+
+  .:
+    dependencies:
+      typescript:
+        specifier: ^5.2.2
+        version: 5.8.3
+    devDependencies:
+      prettier:
+        specifier: ^3.5.3
+        version: 3.5.3
 
 packages:
 
-  /typescript/5.2.2:
-    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
+  prettier@3.5.3:
+    resolution: {integrity: sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==}
+    engines: {node: '>=14'}
+    hasBin: true
+
+  typescript@5.8.3:
+    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
     engines: {node: '>=14.17'}
     hasBin: true
-    dev: false
+
+snapshots:
+
+  prettier@3.5.3: {}
+
+  typescript@5.8.3: {}
