@@ -24,39 +24,39 @@
 */
 
 const maxProfit = function (prices) {
-  if (!prices.length) return
+  if (!prices.length) return;
 
-  const len = prices.length
-  let i = 0, dp = Array.from(new Array(len), () => new Array(2).fill(0))
+  const len = prices.length;
+  let dp = Array.from(new Array(len), () => new Array(2).fill(0));
+  dp[0][0] = 0;
+  dp[0][1] = -prices[0];
+
+  let i = 1;
 
   for (; i < len; i++) {
-    if (i === 0) {
-      dp[i][0] = 0
-      dp[i][1] = -prices[i]
-      continue
-    }
-    dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i])
-    dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i])
+    dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+    dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
   }
 
-  return dp[i - 1][0]
-}
-
+  return dp[i - 1][0];
+};
 
 const maxProfit2 = function (prices) {
-  if (!prices.length) return
+  if (!prices.length) return;
 
-  const len = prices.length
-  let i = 0, d_1_0 = 0, d_1_1 = -Infinity
+  const len = prices.length;
+  let i = 0,
+    d_1_0 = 0,
+    d_1_1 = -Infinity;
 
   for (; i < len; i++) {
-    d_1_0 = Math.max(d_1_0, d_1_1 + prices[i])
-    d_1_1 = Math.max(d_1_1, d_1_0 - prices[i])
+    d_1_0 = Math.max(d_1_0, d_1_1 + prices[i]);
+    d_1_1 = Math.max(d_1_1, d_1_0 - prices[i]);
   }
 
-  return d_1_0
-}
+  return d_1_0;
+};
 
-const list = [1,2,3,4,5]
-const res = maxProfit2(list)
-console.log(res)
+const list = [1, 3, 2, 6, 4, 5];
+const res = maxProfit(list);
+console.log(res);
