@@ -5,20 +5,21 @@
 // 您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。
 
 const minCostClimbingStairs = function (cost) {
-  const d = []
-  d[0] = cost[0]
-  d[1] = cost[1]
-  for (var i = 2, len = cost.length; i < len + 1; i++) {
+  const d = [cost[0], cost[1]];
+  let i = 2,
+    len = cost.length;
+
+  for (; i < len + 1; i++) {
     if (i === len) {
-      d[i] = Math.min(d[i - 1], d[i - 2])
+      d[i] = Math.min(d[i - 1], d[i - 2]);
     } else {
-      d[i] = Math.min(d[i - 1] + cost[i], d[i - 2] + cost[i])
+      d[i] = Math.min(d[i - 1] + cost[i], d[i - 2] + cost[i]);
     }
   }
-  return d[i - 1]
-}
+  return d[i - 1];
+};
 
-const cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
+const cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1];
 
-const res = minCostClimbingStairs(cost)
-console.log(res)
+const res = minCostClimbingStairs(cost);
+console.log(res);

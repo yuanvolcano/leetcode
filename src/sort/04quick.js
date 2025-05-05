@@ -1,7 +1,10 @@
 // 快速排序
 export const quickSort = function (arr) {
   if (arr.length < 2) return arr;
-  const middle = arr[0], len = arr.length, left = [], right = [];
+  const middle = arr[0],
+    len = arr.length,
+    left = [],
+    right = [];
 
   for (let i = 1; i < len; i++) {
     if (arr[i] > middle) {
@@ -12,14 +15,14 @@ export const quickSort = function (arr) {
   }
 
   return quickSort(left).concat([middle], quickSort(right));
-}
+};
 
 /** 原地分区快排 */
-export const quickSort2 = function(arr) {
+export const quickSort2 = function (arr) {
   return quickSortByIndex(arr, 0, arr.length - 1);
-}
+};
 
-const partition = function(arr, left, right) {
+const partition = function (arr, left, right) {
   const pivot = arr[right];
   let i = left;
   for (let j = i; j < right; j++) {
@@ -31,9 +34,9 @@ const partition = function(arr, left, right) {
   [arr[right], arr[i]] = [arr[i], arr[right]];
 
   return i;
-}
+};
 
-const quickSortByIndex = function(arr, left, right) {
+const quickSortByIndex = function (arr, left, right) {
   if (left >= right) {
     return arr;
   }
@@ -44,12 +47,15 @@ const quickSortByIndex = function(arr, left, right) {
   quickSortByIndex(arr, index + 1, right);
 
   return arr;
-}
+};
 
-const nums = []
-for (let i = 0; i < 100; i++) {
-  nums.push(Math.ceil(Math.random() * 100))
-}
+// const nums = []
+// for (let i = 0; i < 100; i++) {
+//   nums.push(Math.ceil(Math.random() * 100))
+// }
+// const result = quickSort2(nums);
+// console.log(result);
+
+const nums = [9, 10, 2, 3, 1, 7, 8, 4, 5];
 const result = quickSort2(nums);
 console.log(result);
-
