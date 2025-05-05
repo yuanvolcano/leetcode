@@ -1,84 +1,145 @@
-class TreeNode {
-  constructor(val) {
-    this.val = val !== void 0 ? val : null;
-    this.left = null;
-    this.right = null;
-  }
-}
+import { TreeNode } from '../common/treeNode';
 
-function Tree(val) {
-  this.root = null;
-}
-
-Tree.prototype.find = function (val) {
-  return traverse(this.root, val)
-}
-
-function traverse(node, val) {
-  if (!node) return null
-  if (node.val === val) return node
-  else if (node.val < val) return traverse(node.right, val)
-  else if (node.val > val) return traverse(node.left, val)
-}
-
-Tree.prototype.insert = function (val) {
-  traverseInsert(this.root, val)
-}
-
-function traverseInsert(node, val, parent, key) {
-  if (node === null || node.val === null) {
-    return node = new Node(val);
+/**
+ * 二叉搜索树类
+ */
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
   }
 
-  if (node.val === val) {
-    return node;
-  } else if (node.val < val) {
-    traverseInsert(node.right, val, node, 'right');
-  } else {
-    traverseInsert(node.left, val, node, 'left');
+  /**
+   * 查找节点
+   * @param {number} val - 要查找的值
+   * @returns {TreeNode|null} - 找到的节点或null
+   */
+  find(val) {
+    return this._traverse(this.root, val);
   }
-}
 
-Tree.prototype.delete = function (val) {
-  let node = this.find(val);
-  if (node === null) {
+  /**
+   * 遍历查找辅助方法
+   * @private
+   */
+  _traverse(node, val) {
+    if (!node) return null;
+    if (node.val === val) return node;
+    else if (node.val < val) return this._traverse(node.right, val);
+    else return this._traverse(node.left, val);
+  }
+
+  /**
+   * 插入节点
+   * @param {number} val - 要插入的值
+   * @returns {TreeNode} - 插入后的节点
+   */
+  insert(val) {
+    if (!this.root) {
+      this.root = new TreeNode(val);
+      return this.root;
+    }
+    return this._traverseInsert(this.root, val);
+  }
+
+  /**
+   * 插入遍历辅助方法
+   * @private
+   */
+  _traverseInsert(node, val) {
+    if (node === null) {
+      return new TreeNode(val);
+    }
+
+    if (node.val === val) {
+      return node;
+    } else if (node.val < val) {
+      if (node.right === null) {
+        node.right = new TreeNode(val);
+        return node.right;
+      }
+      return this._traverseInsert(node.right, val);
+    } else {
+      if (node.left === null) {
+        node.left = new TreeNode(val);
+        return node.left;
+      }
+      return this._traverseInsert(node.left, val);
+    }
+  }
+
+  /**
+   * 删除节点
+   * @param {number} val - 要删除的值
+   * @returns {TreeNode|null} - 删除后的树根节点
+   */
+  delete(val) {
+    this.root = this._deleteNode(this.root, val);
     return this.root;
   }
 
-  if (!node.left && !node.right) {
-    node.val = null;
-  } else if (node.left) {
-    node = node.left;
-  } else if (node.right) {
-    node = node.right;
-  } else {
-    // 左分支的最右侧节点
-    let left = node.left;
-    while (left.right) {
-      left = left.right;
+  /**
+   * 删除节点辅助方法
+   * @private
+   */
+  _deleteNode(node, val) {
+    // 树为空或未找到节点
+    if (!node) return null;
+
+    // 找到要删除的节点
+    if (val < node.val) {
+      node.left = this._deleteNode(node.left, val);
+    } else if (val > node.val) {
+      node.right = this._deleteNode(node.right, val);
+    } else {
+      // 情况1：叶子节点
+      if (!node.left && !node.right) {
+        return null;
+      }
+
+      // 情况2：只有一个子节点
+      if (!node.left) return node.right;
+      if (!node.right) return node.left;
+
+      // 情况3：有两个子节点，找左子树最大值或右子树最小值替换
+      // 这里选择找左子树最大值（最右侧节点）
+      const successor = this._findMax(node.left);
+      node.val = successor.val;
+
+      // 删除替换的节点
+      node.left = this._deleteNode(node.left, successor.val);
     }
-    const lastVal = left.val;
-    // 有分支的最左侧节点
-    // let right = node.right
-    // while (right.left) {
-    //   right = right.left
-    // }
-    // const lastVal = right.val
-    this.delete(lastVal);
-    node.val = lastVal;
+
+    return node;
+  }
+
+  /**
+   * 查找子树最大值
+   * @private
+   */
+  _findMax(node) {
+    while (node.right) {
+      node = node.right;
+    }
+    return node;
   }
 }
 
-const t = new Tree();
-// t.insert(5)
-t.insert(3)
-t.insert(6)
-t.insert(2)
-t.insert(4)
-t.insert(7)
-t.insert(8)
-t.insert(9)
-t.insert(0)
-t.insert(1)
-t.delete(3)
-console.log(t)
+// 测试代码
+const bst = new BinarySearchTree();
+bst.insert(3);
+bst.insert(6);
+bst.insert(2);
+bst.insert(4);
+bst.insert(7);
+bst.insert(8);
+bst.insert(9);
+bst.insert(0);
+bst.insert(1);
+bst.delete(3);
+console.log(JSON.stringify(bst, null, 2));
+
+// 导出类便于其他模块使用
+module.exports = {
+  TreeNode,
+  BinarySearchTree,
+};
