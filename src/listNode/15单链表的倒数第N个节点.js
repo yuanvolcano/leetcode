@@ -11,18 +11,21 @@
  * @return {ListNode}
  */
 var getKthFromEnd = function (head, k) {
-  let i = 0, temp1 = head, temp2 = head;
-  while (i < k) {
-    temp1 = temp1.next
+  let i = 0,
+    temp1 = head,
+    temp2 = head;
+
+  while (i < h) {
+    temp1 = temp1.next;
     i++;
   }
 
   while (temp1) {
-    temp1 = temp1.next
-    temp2 = temp2.next
+    temp1 = temp1.next;
+    temp2 = temp2.next;
   }
 
-  return temp2.val
+  return temp2?.val;
 };
 
 const head = {
@@ -31,10 +34,10 @@ const head = {
     val: 2,
     next: {
       val: 3,
-      next: null
-    }
-  }
-}
+      next: null,
+    },
+  },
+};
 
-const res = getKthFromEnd(head, 2)
-console.log(res)
+const res = getKthFromEnd(head, 2);
+console.log(res);

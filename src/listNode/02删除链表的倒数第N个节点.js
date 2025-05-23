@@ -22,49 +22,80 @@
  * @return {ListNode}
  */
 const removeNthFromEnd = function (head, n) {
-  let len = 0, firstNode = head
+  let len = 0,
+    firstNode = head;
   // 遍历单链表, 计算链表的长度
   while (head) {
-    head = head.next
-    len++
+    head = head.next;
+    len++;
   }
 
   if (n === len) {
-    return firstNode.next
+    return firstNode.next;
   } else {
-    let count = len - n
-    head = firstNode
+    let count = len - n;
+    head = firstNode;
     while (count) {
       if (count === 1) {
         // head.next 是否存在
-        head.next = head.next ? head.next.next : null
-        return firstNode
+        head.next = head.next ? head.next.next : null;
+        return firstNode;
       }
-      head = head.next
-      count--
+      head = head.next;
+      count--;
     }
   }
-}
+};
 
 const removeNthFromEnd2 = function (head, n) {
-  let start = 0, fast = slow = head;
+  let start = 0,
+    fast = (slow = head);
   while (start <= n) {
     if (fast === null) {
       return head.next;
     }
-    fast = fast.next
+    fast = fast.next;
     start++;
   }
 
   while (fast) {
-    fast = fast.next
-    slow = slow.next
+    fast = fast.next;
+    slow = slow.next;
   }
   if (slow && slow.next) {
     slow.next = slow.next.next;
   }
   return head;
-}
+};
+
+/**
+ * 获取倒数第 k 个节点
+ */
+var getKthFromEnd = function (head, k) {
+  let i = 0,
+    temp1 = head,
+    temp2 = head;
+
+  while (i < h) {
+    temp1 = temp1.next;
+    i++;
+  }
+
+  while (temp1) {
+    temp1 = temp1.next;
+    temp2 = temp2.next;
+  }
+
+  return temp2?.val;
+};
+
+const removeNthFromEnd3 = function (head, n) {
+  const dummy = new ListNode(-1);
+  dummy.next = head;
+  const x = getKthFromEnd(dummy, n + 1);
+  x.next = x.next.next;
+  return dummy.next;
+};
 
 const listNode = {
   val: 1,
@@ -76,12 +107,12 @@ const listNode = {
         val: 4,
         next: {
           val: 5,
-          next: null
-        }
-      }
-    }
-  }
-}
+          next: null,
+        },
+      },
+    },
+  },
+};
 
 // const listNode = {
 //   val: 1,
@@ -89,5 +120,5 @@ const listNode = {
 // }
 
 // const res = removeNthFromEnd(listNode, 5)
-const res = removeNthFromEnd2(listNode, 5)
-console.log(res)
+const res = removeNthFromEnd2(listNode, 5);
+console.log(res);
