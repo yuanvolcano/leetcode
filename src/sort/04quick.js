@@ -22,18 +22,35 @@ export const quickSort2 = function (arr) {
   return quickSortByIndex(arr, 0, arr.length - 1);
 };
 
+/**
+ * 快速排序的分区函数
+ * @param {number[]} arr - 待分区的数组
+ * @param {number} left - 分区左边界
+ * @param {number} right - 分区右边界
+ * @returns {number} 基准值的最终位置
+ */
 const partition = function (arr, left, right) {
+  // 选择最右边的元素作为基准值
   const pivot = arr[right];
-  let i = left;
-  for (let j = i; j < right; j++) {
-    if (arr[j] < pivot) {
-      [arr[j], arr[i]] = [arr[i], arr[j]];
-      i++;
-    }
-  }
-  [arr[right], arr[i]] = [arr[i], arr[right]];
+  // smallerIndex 表示小于基准值的区域边界
+  let smallerIndex = left;
+  // currentIndex 表示当前遍历的位置
+  let currentIndex = smallerIndex;
 
-  return i;
+  // 遍历数组，将小于基准值的元素移到左侧
+  while (currentIndex < right) {
+    if (arr[currentIndex] < pivot) {
+      // 交换元素，扩大小于基准值的区域
+      [arr[currentIndex], arr[smallerIndex]] = [arr[smallerIndex], arr[currentIndex]];
+      smallerIndex++;
+    }
+    currentIndex++;
+  }
+
+  // 将基准值放到正确的位置
+  [arr[right], arr[smallerIndex]] = [arr[smallerIndex], arr[right]];
+
+  return smallerIndex;
 };
 
 const quickSortByIndex = function (arr, left, right) {
