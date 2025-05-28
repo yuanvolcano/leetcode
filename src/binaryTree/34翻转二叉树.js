@@ -13,27 +13,43 @@
 var invertTree = function (root) {
   const traverse = (node) => {
     if (!node) {
-      return node
+      return node;
     }
-    let left = node.left
-    node.left = node.right
-    node.right = left
-    traverse(node.left)
-    traverse(node.right)
-  }
+    let left = node.left;
+    node.left = node.right;
+    node.right = left;
+    traverse(node.left);
+    traverse(node.right);
+  };
 
-  traverse(root)
-  return root
+  traverse(root);
+  return root;
 };
 
-var invertTree2 = function(root) {
+var invertTree2 = function (root) {
   if (root === null) {
-      return null;
+    return null;
   }
 
   const leftTemp = root.left;
   root.left = invertTree(root.right);
   root.right = invertTree(leftTemp);
+
+  return root;
+};
+
+const invertTree3 = function (root) {
+  if (root === null) {
+    return root;
+  }
+  const leftNode = root.left;
+  const rightNode = root.right;
+
+  root.right = leftNode;
+  root.left = rightNode;
+
+  invertTree(root.left);
+  invertTree(root.right);
 
   return root;
 };
