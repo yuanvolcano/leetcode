@@ -33,9 +33,7 @@
  * @return {TreeNode}
  */
 
-import { buildPreTreeNode } from '../utils/util.js';
-
-var convertBST = function (root) {
+const convertBST = function (root) {
   let sum = 0;
   const traverse = (node) => {
     if (!node) {
@@ -44,9 +42,33 @@ var convertBST = function (root) {
     traverse(node.right);
     sum += node.val;
     node.val = sum;
-    console.log(node.val);
     traverse(node.left);
   };
   traverse(root);
   return root;
 };
+
+const root = {
+  val: 5,
+  left: {
+    val: 3,
+    left: null,
+    right: {
+      val: 4,
+      left: null,
+      right: null,
+    },
+  },
+  right: {
+    val: 7,
+    left: {
+      val: 6,
+      left: null,
+      right: null,
+    },
+    right: null,
+  },
+};
+
+const res = convertBST2(root);
+console.log(res);
