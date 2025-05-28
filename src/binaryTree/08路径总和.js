@@ -6,18 +6,18 @@
 
 // 二叉树不超过1000个节点，且节点数值范围是 [-1000000,1000000] 的整数。
 
-const pathSum = function(root, sum) {
-  if (!root) return 0
-  const flag = findPath(root, sum)
-  const leftFlag = pathSum(root.left, sum)
-  const rightFlag = pathSum(root.right, sum)
-  return flag + leftFlag + rightFlag
-}
+const pathSum = function (root, sum) {
+  if (!root) return 0;
+  const flag = findPath(root, sum);
+  const leftFlag = pathSum(root.left, sum);
+  const rightFlag = pathSum(root.right, sum);
+  return flag + leftFlag + rightFlag;
+};
 
-function findPath (node, sum) {
-  if (!node) return 0
-  const flag = node.val === sum ? 1 : 0
-  const leftFlag = findPath(node.left, sum - node.val)
-  const rightFlag = findPath(node.right, sum - node.val)
-  return flag + leftFlag + rightFlag
+function findPath(node, sum) {
+  if (!node) return 0;
+  const flag = node.val === sum ? 1 : 0;
+  const leftFlag = findPath(node.left, sum - node.val);
+  const rightFlag = findPath(node.right, sum - node.val);
+  return flag + leftFlag + rightFlag;
 }

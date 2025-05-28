@@ -14,23 +14,23 @@
 //    /   /
 //  -10  5
 
-const sortedArrayToBST = function(nums) {
+const sortedArrayToBST = function (nums) {
   // 由于数组是排序好的，因此一个思路就是将数组分成两半，一半是左子树，另一半是右子树
   // 然后运用“树的递归性质”递归完成操作即可。
-  if(nums.length === 0) return null
-  const mid = nums.length >> 1
-  const root = new CreateNode(nums[mid])
+  if (nums.length === 0) return null;
+  const mid = nums.length >> 1;
+  const root = new CreateNode(nums[mid]);
 
-  root.left = sortedArrayToBST(nums.slice(0, mid))
-  root.right = sortedArrayToBST(nums.slice(mid + 1))
-  return root
+  root.left = sortedArrayToBST(nums.slice(0, mid));
+  root.right = sortedArrayToBST(nums.slice(mid + 1));
+  return root;
+};
+
+function CreateNode(val) {
+  this.val = val;
+  this.left = this.right = null;
 }
 
-function CreateNode (val) {
-  this.val = val
-  this.left = this.right = null
-}
-
-const list = [-10,-3,0,5,9]
-const result = sortedArrayToBST(list)
-console.log(result)
+const list = [-10, -3, 0, 5, 9];
+const result = sortedArrayToBST(list);
+console.log(result);

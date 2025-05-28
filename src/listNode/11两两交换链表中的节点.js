@@ -1,6 +1,5 @@
 // 给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。
 
-
 // 修改节点内部值
 /**
  * Definition for singly-linked list.
@@ -14,28 +13,29 @@
  * @return {ListNode}
  */
 var swapPairs = function (head) {
-  let source = head, pre
+  let source = head,
+    pre;
   while (head) {
-    pre = head.val
+    pre = head.val;
     if (head.next) {
-      head.val = head.next.val
-      head.next.val = pre
-      head = head.next.next
+      head.val = head.next.val;
+      head.next.val = pre;
+      head = head.next.next;
     }
   }
-  return source
+  return source;
 };
 
 var swapPairs2 = function (head) {
   if (head === null || head.next === null) {
-    return head
+    return head;
   }
 
-  let newHead = head.next
-  head.next = swapPairs2(newHead.next)
-  newHead.next = head
+  let newHead = head.next;
+  head.next = swapPairs2(newHead.next);
+  newHead.next = head;
 
-  return newHead
+  return newHead;
 };
 
 const head = {
@@ -46,10 +46,10 @@ const head = {
       val: 3,
       next: {
         val: 4,
-        next: null
-      }
-    }
-  }
-}
+        next: null,
+      },
+    },
+  },
+};
 
-swapPairs2(head)
+swapPairs2(head);

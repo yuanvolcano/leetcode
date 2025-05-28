@@ -29,9 +29,9 @@ const headNode = {
       next: {
         val: 4,
         next: null,
-      }
-    }
-  }
-}
+      },
+    },
+  },
+};
 
 reversePrint(headNode);

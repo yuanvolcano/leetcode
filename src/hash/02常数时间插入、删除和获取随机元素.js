@@ -1,17 +1,17 @@
-var RandomizedSet = function() {
-  this.map = {}
+var RandomizedSet = function () {
+  this.map = {};
 };
 
 /**
  * @param {number} val
  * @return {boolean}
  */
-RandomizedSet.prototype.insert = function(val) {
+RandomizedSet.prototype.insert = function (val) {
   if (this.map[val] === void 0) {
-    this.map[val] = val
-    return true
+    this.map[val] = val;
+    return true;
   } else {
-    return false
+    return false;
   }
 };
 
@@ -19,22 +19,22 @@ RandomizedSet.prototype.insert = function(val) {
  * @param {number} val
  * @return {boolean}
  */
-RandomizedSet.prototype.remove = function(val) {
+RandomizedSet.prototype.remove = function (val) {
   if (this.map[val] !== void 0) {
-    delete this.map[val]
-    return true
+    delete this.map[val];
+    return true;
   } else {
-    return false
+    return false;
   }
 };
 
 /**
  * @return {number}
  */
-RandomizedSet.prototype.getRandom = function() {
-  const keys = Object.keys(this.map)
-  const index = Math.floor(Math.random() * keys.length)
-  return this.map[keys[index]]
+RandomizedSet.prototype.getRandom = function () {
+  const keys = Object.keys(this.map);
+  const index = Math.floor(Math.random() * keys.length);
+  return this.map[keys[index]];
 };
 
 /**
@@ -45,11 +45,11 @@ RandomizedSet.prototype.getRandom = function() {
  * var param_3 = obj.getRandom()
  */
 
-const r = new RandomizedSet()
-r.insert(1)
-r.remove(2)
-r.insert(2)
-r.getRandom()
-r.remove(1)
-r.insert(2)
-r.getRandom()
+const r = new RandomizedSet();
+r.insert(1);
+r.remove(2);
+r.insert(2);
+r.getRandom();
+r.remove(1);
+r.insert(2);
+r.getRandom();

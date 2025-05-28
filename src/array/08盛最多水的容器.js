@@ -3,19 +3,22 @@
 // 面积 = Math.min(arr[j], arr[i]) * (j - i)
 // 使用双指针，i < j, 当 arr[j] >= arr[i], i++; 当arr[j] < arr[i], j--;
 const maxArea = function (heights) {
-  let area = 0, max = 0, i = 0, j = heights.length - 1
+  let area = 0,
+    max = 0,
+    i = 0,
+    j = heights.length - 1;
   while (i < j) {
-    area = Math.min(heights[i], heights[j]) * (j - i)
-    if (area > max) max = area
+    area = Math.min(heights[i], heights[j]) * (j - i);
+    if (area > max) max = area;
     if (heights[j] >= heights[i]) {
-      i++
+      i++;
     } else if (heights[j] < heights[i]) {
-      j--
+      j--;
     }
   }
-  return max
-}
+  return max;
+};
 
-const arr = [1,8,6,2,5,4,8,3,7]
-let res = maxArea(arr)
-console.log(res)
+const arr = [1, 8, 6, 2, 5, 4, 8, 3, 7];
+let res = maxArea(arr);
+console.log(res);

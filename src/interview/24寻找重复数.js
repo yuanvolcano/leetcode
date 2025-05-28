@@ -14,15 +14,15 @@
 var findDuplicate = function (nums) {
   for (let i = 0, len = nums.length; i < len; i++) {
     if (nums.lastIndexOf(nums[i]) !== i) {
-      return nums[i]
+      return nums[i];
     }
   }
 };
 
-
 // 快慢指针
 var findDuplicate2 = function (nums) {
-  let slow = 0, fast = 0;
+  let slow = 0,
+    fast = 0;
   do {
     slow = nums[slow];
     fast = nums[nums[fast]];
@@ -39,9 +39,9 @@ var findDuplicate3 = function (nums) {
   for (let i = 0, len = nums.length; i < len; i++) {
     while (nums[i] !== i) {
       if (nums[i] === nums[nums[i]]) {
-        return nums[i]
+        return nums[i];
       }
-      [nums[nums[i]], nums[i]] = [nums[i], nums[nums[i]]]
+      [nums[nums[i]], nums[i]] = [nums[i], nums[nums[i]]];
     }
   }
-}
+};

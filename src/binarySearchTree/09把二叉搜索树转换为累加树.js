@@ -46,7 +46,7 @@ var convertBST = function (root) {
     node.val = sum;
     console.log(node.val);
     traverse(node.left);
-  }
+  };
   traverse(root);
   return root;
 };

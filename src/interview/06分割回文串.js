@@ -2,7 +2,6 @@
 
 // 回文串 是正着读和反着读都一样的字符串。
 
-
 /**
  * @param {string} s
  * @return {string[][]}
@@ -20,15 +19,16 @@ const partition = function (s) {
         ans.pop();
       }
     }
-  }
+  };
 
   const n = s.length;
   const f = new Array(n).fill(0).map(() => new Array(n).fill(true));
-  let ret = [], ans = [];
+  let ret = [],
+    ans = [];
 
   for (let i = n - 1; i >= 0; --i) {
     for (let j = i + 1; j < n; ++j) {
-      f[i][j] = (s[i] === s[j]) && f[i + 1][j - 1];
+      f[i][j] = s[i] === s[j] && f[i + 1][j - 1];
     }
   }
   dfs(0);

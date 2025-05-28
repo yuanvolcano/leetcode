@@ -17,34 +17,33 @@
 // 输入：nums = [9,6,1,6,2]
 // 输出：4
 
-const movesToMakeZigzag = function(nums) {
-  if (!nums.length)
-      return 0
+const movesToMakeZigzag = function (nums) {
+  if (!nums.length) return 0;
 
-  let i = 0
-  let len = nums.length
-  let ans1 = 0
-  let ans2 = 0
+  let i = 0;
+  let len = nums.length;
+  let ans1 = 0;
+  let ans2 = 0;
 
   while (i < len) {
     if (i % 2 === 0) {
       // 偶数索引
-      let diff1 = i > 0 && nums[i - 1] >= nums[i] ? nums[i - 1] - nums[i] + 1 : 0
-      let diff2 = i < len - 1 && nums[i + 1] >= nums[i] ? nums[i + 1] - nums[i] + 1 : 0
-      ans2 += Math.max(diff1, diff2)
+      let diff1 = i > 0 && nums[i - 1] >= nums[i] ? nums[i - 1] - nums[i] + 1 : 0;
+      let diff2 = i < len - 1 && nums[i + 1] >= nums[i] ? nums[i + 1] - nums[i] + 1 : 0;
+      ans2 += Math.max(diff1, diff2);
     } else {
       // 奇数索引
-      let diff1 = i > 0 && nums[i - 1] >= nums[i] ? nums[i - 1] - nums[i] + 1 : 0
-      let diff2 = i < len - 1 && nums[i + 1] >= nums[i] ? nums[i + 1] - nums[i] + 1 : 0
-      ans1 += Math.max(diff1, diff2)
+      let diff1 = i > 0 && nums[i - 1] >= nums[i] ? nums[i - 1] - nums[i] + 1 : 0;
+      let diff2 = i < len - 1 && nums[i + 1] >= nums[i] ? nums[i + 1] - nums[i] + 1 : 0;
+      ans1 += Math.max(diff1, diff2);
     }
 
-    i++
+    i++;
   }
 
-  return Math.min(ans1, ans2)
-}
+  return Math.min(ans1, ans2);
+};
 
-const nums = [1,2,3]
-const result = movesToMakeZigzag(nums)
-console.log(result)
+const nums = [1, 2, 3];
+const result = movesToMakeZigzag(nums);
+console.log(result);

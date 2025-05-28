@@ -14,7 +14,8 @@
 var checkSubTree = function (t1, t2) {
   const rootFlag = traverse(t1, t2);
 
-  let leftFlag = false, rightFlag = false;
+  let leftFlag = false,
+    rightFlag = false;
 
   if (t1.left) {
     leftFlag = checkSubTree(t1.left, t2);
@@ -34,4 +35,5 @@ function traverse(node1, node2) {
     return false;
   }
   return traverse(node1.left, node2.left) && traverse(node1.right, node2.right);
-}s
+}
+s;

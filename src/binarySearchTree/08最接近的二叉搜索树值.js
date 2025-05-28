@@ -16,8 +16,6 @@
 
 // 输出: 4
 
-
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -32,7 +30,8 @@
  * @return {number}
  */
 var closestValue = function (root, target) {
-  let low = Number.MIN_SAFE_INTEGER, high = Number.MAX_SAFE_INTEGER;
+  let low = Number.MIN_SAFE_INTEGER,
+    high = Number.MAX_SAFE_INTEGER;
   const traverse = (node) => {
     if (!node) {
       return;
@@ -44,14 +43,14 @@ var closestValue = function (root, target) {
 
     if (node.val <= target) {
       low = Math.max(node.val, low);
-      traverse(node.right, target)
+      traverse(node.right, target);
     }
 
     if (node.val >= target) {
       high = Math.min(node.val, high);
       traverse(node.left, target);
     }
-  }
+  };
   traverse(root, target);
-  return (high - target) > (target - low) ? low : high;
+  return high - target > target - low ? low : high;
 };

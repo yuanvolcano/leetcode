@@ -11,18 +11,16 @@
  * @return {boolean}
  */
 var flipEquiv = function (root1, root2) {
-  if (!((!root1 && !root2) ||
-    (root1 && root2 && root1.val !== root2.val))
-  ) {
-    return false
+  if (!((!root1 && !root2) || (root1 && root2 && root1.val !== root2.val))) {
+    return false;
   } else if (!root1 && !root2) {
-    return true
+    return true;
   } else {
-    let leftLeft = flipEquiv(root1.left, root2.left)
-    let leftRight = flipEquiv(root1.left, root2.right)
-    let rightLeft = flipEquiv(root1.right, root2.left)
-    let rigthRight = flipEquiv(root1.right, root2.right)
+    let leftLeft = flipEquiv(root1.left, root2.left);
+    let leftRight = flipEquiv(root1.left, root2.right);
+    let rightLeft = flipEquiv(root1.right, root2.left);
+    let rigthRight = flipEquiv(root1.right, root2.right);
 
-    return (leftLeft || leftRight) && (rightLeft || rigthRight)
+    return (leftLeft || leftRight) && (rightLeft || rigthRight);
   }
 };

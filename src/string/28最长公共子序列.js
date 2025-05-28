@@ -6,21 +6,23 @@
 // 若这两个字符串没有公共子序列，则返回 0。
 
 const longestCommonSubsequence = function (text1, text2) {
-  const len1 = text1.length, len2 = text2.length
-  const dp = Array.from(new Array(len1 + 1), () => new Array(len2 + 1).fill(0))
+  const len1 = text1.length,
+    len2 = text2.length;
+  const dp = Array.from(new Array(len1 + 1), () => new Array(len2 + 1).fill(0));
 
-  for(let i = 1; i <= len1; i++){
-    for(let j = 1; j <= len2; j++){
-        if (text1[i - 1] === text2[j - 1]) {
-          dp[i][j] = dp[i - 1][j - 1] + 1
-        } else {
-            dp[i][j] = Math.max(dp[i][j - 1], dp[i - 1][j])
-        }
+  for (let i = 1; i <= len1; i++) {
+    for (let j = 1; j <= len2; j++) {
+      if (text1[i - 1] === text2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i][j - 1], dp[i - 1][j]);
+      }
     }
   }
-  return dp[len1][len2]
-}
+  return dp[len1][len2];
+};
 
-const text1 = 'bl', text2 = 'yby'
-const result = longestCommonSubsequence(text1, text2)
-console.log(result)
+const text1 = 'bl',
+  text2 = 'yby';
+const result = longestCommonSubsequence(text1, text2);
+console.log(result);

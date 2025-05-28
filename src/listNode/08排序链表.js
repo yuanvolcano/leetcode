@@ -10,50 +10,51 @@
  * @return {ListNode}
  */
 var sortList = function (head) {
-  const orderList = []
+  const orderList = [];
   while (head) {
     if (!orderList.length) {
       orderList.push({
         val: head.val,
-        next: null
-      })
+        next: null,
+      });
     } else {
-      let i = 0, len = orderList.length, isChange = false
+      let i = 0,
+        len = orderList.length,
+        isChange = false;
       for (; i < len; i++) {
         if (head.val < orderList[i].val) {
-          orderList.splice(i, 0, { val: head.val, next: null })
-          isChange = true
-          break
+          orderList.splice(i, 0, { val: head.val, next: null });
+          isChange = true;
+          break;
         }
       }
 
       if (!isChange) {
         orderList.push({
           val: head.val,
-          next: null
-        })
+          next: null,
+        });
       }
     }
 
-    head = head.next
+    head = head.next;
   }
 
   let res, source;
 
   if (!orderList.length) {
-    return null
+    return null;
   } else {
-    source = res = orderList[0]
+    source = res = orderList[0];
   }
 
   for (let i = 1, len = orderList.length; i < len; i++) {
-    res.next = orderList[i]
-    res = res.next
+    res.next = orderList[i];
+    res = res.next;
   }
 
-  return source
+  return source;
 };
-
 
 // const head = {
 //   val: -1,
@@ -72,7 +73,7 @@ var sortList = function (head) {
 //   }
 // }
 
-const head = { val: null }
+const head = { val: null };
 
-const result = sortList(head)
-console.log(result)
+const result = sortList(head);
+console.log(result);

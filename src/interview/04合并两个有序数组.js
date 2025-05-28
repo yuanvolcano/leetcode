@@ -12,16 +12,18 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 const merge = function (nums1, m, nums2, n) {
-  let i = m - 1, j = n - 1, end = m + n - 1;
+  let i = m - 1,
+    j = n - 1,
+    end = m + n - 1;
   while (j >= 0) {
-    nums1[end--] = (i >= 0 &&nums1[i] >= nums2[j]) ? nums1[i--] : nums2[j--];
+    nums1[end--] = i >= 0 && nums1[i] >= nums2[j] ? nums1[i--] : nums2[j--];
   }
   return nums1;
 };
 
-const nums1 =[1,2,3,0,0,0]
+const nums1 = [1, 2, 3, 0, 0, 0];
 const m = 3;
-const nums2 = [2,5,6];
+const nums2 = [2, 5, 6];
 const n = 3;
 const res = merge(nums1, m, nums2, n);
 console.log(res);

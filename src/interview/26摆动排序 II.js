@@ -11,15 +11,15 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var wiggleSort = function (nums) {
-  let copyNums = nums.sort((a, b) => b - a).slice(0)
+  let copyNums = nums.sort((a, b) => b - a).slice(0);
   let N = 0;
   for (let i = 1; i < nums.length; i += 2) {
     // 依次把排序好的大的数放在奇数位
-    nums[i] = copyNums[N++]
+    nums[i] = copyNums[N++];
   }
   for (let i = 0; i < nums.length; i += 2) {
     // 依次把排序好的小的数放在偶数位
-    nums[i] = copyNums[N++]
+    nums[i] = copyNums[N++];
   }
   return nums;
 };

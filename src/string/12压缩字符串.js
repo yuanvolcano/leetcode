@@ -8,25 +8,26 @@
 
 // 输入：["a","b","b","b","b","b","b","b","b","b","b","b","b"]，输出：返回4，输入数组的前4个字符应该是：["a","b","1","2"]。
 
-const compress = function(chars) {
-  let res = []
-  let temp = '', size = 0;
-  for (let i =0, len = chars.length; i < len; i++) {
+const compress = function (chars) {
+  let res = [];
+  let temp = '',
+    size = 0;
+  for (let i = 0, len = chars.length; i < len; i++) {
     if (temp !== chars[i]) {
       if (size !== 0) {
         res.push(size);
       }
-      temp = chars[i]
-      size = 1
-      res.push(temp)
+      temp = chars[i];
+      size = 1;
+      res.push(temp);
     } else {
-      size++
+      size++;
     }
   }
   res.push(size);
-  return res.join('').split('')
-}
+  return res.join('').split('');
+};
 
-let list = ["a","a","b","b","c","c","c", "d"]
-let res = compress(list)
-console.log(res)
+let list = ['a', 'a', 'b', 'b', 'c', 'c', 'c', 'd'];
+let res = compress(list);
+console.log(res);

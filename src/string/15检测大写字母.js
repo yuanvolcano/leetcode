@@ -6,16 +6,16 @@
 // 单词中所有字母都不是大写，比如"leetcode"。
 // 如果单词不只含有一个字母，只有首字母大写， 比如 "Google"。
 
-const detectCapitalUse = function(word) {
+const detectCapitalUse = function (word) {
   if (word === word.toUpperCase()) {
-    return true
+    return true;
   } else if (word === word.toLowerCase()) {
-    return true
+    return true;
   } else if (word[0] === word[0].toUpperCase() && word.slice(1) === word.slice(1).toLowerCase()) {
-    return true
+    return true;
   }
-  return false
-}
+  return false;
+};
 
-let res = detectCapitalUse('GooglE')
-console.log(res)
+let res = detectCapitalUse('GooglE');
+console.log(res);

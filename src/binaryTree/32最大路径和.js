@@ -17,18 +17,18 @@
  * @return {number}
  */
 var maxPathSum = function (root) {
-  let res = Number.MIN_SAFE_INTEGER
+  let res = Number.MIN_SAFE_INTEGER;
   const traverse = (node) => {
-    if (!node) return 0
+    if (!node) return 0;
 
-    const left = Math.max(0, traverse(node.left))
-    const right = Math.max(0, traverse(node.right))
-    res = Math.max(left + right + node.val, res)
+    const left = Math.max(0, traverse(node.left));
+    const right = Math.max(0, traverse(node.right));
+    res = Math.max(left + right + node.val, res);
 
-    return Math.max(left, right) + node.val
-  }
-  traverse(root)
-  return res
+    return Math.max(left, right) + node.val;
+  };
+  traverse(root);
+  return res;
 };
 
 const root = {
@@ -36,22 +36,22 @@ const root = {
   left: {
     val: 9,
     left: null,
-    right: null
+    right: null,
   },
   right: {
     val: 20,
     left: {
       val: 15,
       left: null,
-      right: null
+      right: null,
     },
     right: {
       val: 7,
       left: null,
-      right: null
-    }
-  }
-}
+      right: null,
+    },
+  },
+};
 
-const result = maxPathSum(root)
-console.log(result)
+const result = maxPathSum(root);
+console.log(result);

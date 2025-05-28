@@ -9,16 +9,16 @@
  * @return {number[]}
  */
 var productExceptSelf = function (nums) {
-  const len = nums.length
-  const res = new Array(len).fill(1)
+  const len = nums.length;
+  const res = new Array(len).fill(1);
   for (let i = 1; i < len; i++) {
-    res[i] = nums[i - 1] * res[i - 1]
+    res[i] = nums[i - 1] * res[i - 1];
   }
 
-  let rightAll = 1
+  let rightAll = 1;
   for (let j = len - 1; j > 0; j--) {
-    res[i] *= rightAll
-    rightAll *= nums[i]
+    res[i] *= rightAll;
+    rightAll *= nums[i];
   }
-  return res
-}
+  return res;
+};

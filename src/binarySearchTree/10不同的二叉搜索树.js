@@ -4,7 +4,7 @@
  * @return {number}
  */
 var numTrees = function (n) {
-  const memo = new Array(n + 1).fill(0).map(i => new Array(n + 1).fill(0));
+  const memo = new Array(n + 1).fill(0).map((i) => new Array(n + 1).fill(0));
   const count = (low, high) => {
     if (low > high) {
       return 1;
@@ -20,7 +20,7 @@ var numTrees = function (n) {
     }
     memo[low][high] = res;
     return res;
-  }
+  };
   return count(1, n);
 };
 

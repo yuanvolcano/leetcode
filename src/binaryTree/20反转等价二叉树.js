@@ -5,18 +5,16 @@
 // 编写一个判断两个二叉树是否是翻转等价的函数。这些树由根节点 root1 和 root2 给出。
 
 const flipEquiv = function (root1, root2) {
-  if (!((!root1 && !root2) ||
-  (root1 && root2 && root1.val === root2.val))
-  ) {
-    return false
+  if (!((!root1 && !root2) || (root1 && root2 && root1.val === root2.val))) {
+    return false;
   } else if (!root1 && !root2) {
-    return true
+    return true;
   } else {
-    const leftLeft = flipEquiv(root1.left, root2.left)
-    const leftRight = flipEquiv(root1.left, root2.right)
-    const rightLeft = flipEquiv(root1.right, root2.left)
-    const rigthRight = flipEquiv(root1.right, root2.right)
+    const leftLeft = flipEquiv(root1.left, root2.left);
+    const leftRight = flipEquiv(root1.left, root2.right);
+    const rightLeft = flipEquiv(root1.right, root2.left);
+    const rigthRight = flipEquiv(root1.right, root2.right);
 
-    return (leftLeft || leftRight) && (rightLeft || rigthRight)
+    return (leftLeft || leftRight) && (rightLeft || rigthRight);
   }
-}
+};

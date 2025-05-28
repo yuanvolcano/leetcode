@@ -22,8 +22,12 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
-const addTwoNumbers = function(l1, l2) {
-  let num1, num2, sum, temp = 0, result = curNode = new ListNode(0);
+const addTwoNumbers = function (l1, l2) {
+  let num1,
+    num2,
+    sum,
+    temp = 0,
+    result = (curNode = new ListNode(0));
 
   while (l1 || l2 || temp) {
     num1 = l1 ? ~~l1.val : 0;
@@ -34,20 +38,20 @@ const addTwoNumbers = function(l1, l2) {
     temp = sum > 9 ? 1 : 0;
 
     if (l1) {
-      l1 = l1.next
+      l1 = l1.next;
     }
 
     if (l2) {
-      l2 = l2.next
+      l2 = l2.next;
     }
   }
 
   return result.next;
-}
+};
 
-function ListNode (val) {
-  this.val = val
-  this.next = null
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
 }
 
 const listNode1 = {
@@ -56,10 +60,10 @@ const listNode1 = {
     val: 4,
     next: {
       val: 3,
-      next: null
-    }
-  }
-}
+      next: null,
+    },
+  },
+};
 
 const listNode2 = {
   val: 5,
@@ -67,10 +71,10 @@ const listNode2 = {
     val: 6,
     next: {
       val: 6,
-      next: null
-    }
-  }
-}
+      next: null,
+    },
+  },
+};
 
-const result = addTwoNumbers(listNode1, listNode2)
-console.log(result)
+const result = addTwoNumbers(listNode1, listNode2);
+console.log(result);

@@ -1,13 +1,12 @@
 // 给定二叉搜索树（BST）的根节点和一个值。 你需要在BST中找到节点值等于给定值的节点。 返回以该节点为根的子树。 如果节点不存在，则返回 NULL。
 
-const searchBST = function(root, val) {
-  if (!root) return null
+const searchBST = function (root, val) {
+  if (!root) return null;
   if (root.val === val) {
-    return root
+    return root;
   }
-  const leftNode = searchBST(root.left, val)
-  const rightNode = searchBST(root.right, val)
+  const leftNode = searchBST(root.left, val);
+  const rightNode = searchBST(root.right, val);
 
-  return leftNode || rightNode
-}
-
+  return leftNode || rightNode;
+};

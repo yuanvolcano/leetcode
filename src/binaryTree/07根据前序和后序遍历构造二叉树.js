@@ -18,7 +18,7 @@
 var constructFromPrePost = function (preorder, postorder) {
   if (pre.length == 0) {
     return null;
-  };
+  }
 
   let tmp = pre[0];
   let index = post.indexOf(pre[1]);

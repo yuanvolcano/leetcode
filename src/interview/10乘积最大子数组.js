@@ -7,13 +7,16 @@
 // dp[0] = nums[0]
 // 假设 i, 在 0 - i 之前存在 j，若
 
-
 /**
  * @param {number[]} nums
  * @return {number}
  */
 var maxProduct = function (nums) {
-  let len = nums.length, max = nums[0], nowMax = 1, nowMin = 1, tmp;
+  let len = nums.length,
+    max = nums[0],
+    nowMax = 1,
+    nowMin = 1,
+    tmp;
 
   for (let i = 0; i < len; i++) {
     // 遇到负数，最大值 和 最小值 一定会发生互换（题解中列出所有情况的规律总结）
@@ -34,6 +37,6 @@ var maxProduct = function (nums) {
   return max;
 };
 
-const nums = [-5, 2, 3]
-const result = maxProduct(nums)
-console.log(result)
+const nums = [-5, 2, 3];
+const result = maxProduct(nums);
+console.log(result);

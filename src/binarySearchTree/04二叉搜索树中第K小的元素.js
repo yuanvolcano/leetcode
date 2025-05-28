@@ -12,39 +12,39 @@
  * @return {number}
  */
 var kthSmallest = function (root, k) {
-  const list = []
+  const list = [];
   const inorderTraverse = (node) => {
     if (!node) {
       return;
     }
-    inorderTraverse(node.left)
-    list.push(node.val)
-    inorderTraverse(node.right)
-  }
+    inorderTraverse(node.left);
+    list.push(node.val);
+    inorderTraverse(node.right);
+  };
 
-  inorderTraverse(root)
+  inorderTraverse(root);
 
-  return list[k - 1]
+  return list[k - 1];
 };
 
 var kthSmallest2 = function (root, k) {
-  let res = 0
-  let rank = 0
+  let res = 0;
+  let rank = 0;
   const traverse = (node) => {
-    if (!node) return
+    if (!node) return;
 
-    traverse(node.left)
-    rank++
+    traverse(node.left);
+    rank++;
     if (rank === k) {
-      res = node.val
-      return
+      res = node.val;
+      return;
     }
-    traverse(node.right)
-  }
+    traverse(node.right);
+  };
 
-  traverse(root)
-  return res
-}
+  traverse(root);
+  return res;
+};
 
 const root = {
   val: 3,
@@ -52,15 +52,15 @@ const root = {
     val: 1,
     left: null,
     right: {
-      val: 2
-    }
+      val: 2,
+    },
   },
   right: {
     val: 4,
     left: null,
     right: null,
-  }
-}
+  },
+};
 
-const result = kthSmallest2(root, 1)
-console.log(result)
+const result = kthSmallest2(root, 1);
+console.log(result);

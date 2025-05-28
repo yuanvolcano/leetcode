@@ -6,46 +6,51 @@
 
 // 找出可能的最小值 min，和最大值 max
 // 当 min < max, 做暴力破解是否满足条件
-const shipWithinDays = function(weights, day) {
-  let sum = getSum(weights)
-  let max = Math.max.call(null, ...weights)
-  let baseVal = Math.ceil(sum / day, max)
+const shipWithinDays = function (weights, day) {
+  let sum = getSum(weights);
+  let max = Math.max.call(null, ...weights);
+  let baseVal = Math.ceil(sum / day, max);
   while (baseVal < sum) {
-    if (hasFill(weights, day, baseVal)) { return baseVal }
-    else baseVal++
+    if (hasFill(weights, day, baseVal)) {
+      return baseVal;
+    } else baseVal++;
   }
-  return baseVal
+  return baseVal;
 };
 
-function getSum (arr) {
-  let sum = 0
+function getSum(arr) {
+  let sum = 0;
   for (let i = 0, len = arr.length; i < len; i++) {
-    sum += arr[i]
+    sum += arr[i];
   }
-  return sum
+  return sum;
 }
 
-function hasFill (weights, day, baseVal) {
-  let j = 0, len = weights.length, sum = 0, count = 0
+function hasFill(weights, day, baseVal) {
+  let j = 0,
+    len = weights.length,
+    sum = 0,
+    count = 0;
   while (j < len) {
-    sum += weights[j]
+    sum += weights[j];
     if (sum < baseVal) {
-      j++
+      j++;
     } else {
-      sum = 0
-      count++
+      sum = 0;
+      count++;
       if (sum === baseVal) {
-        j++
+        j++;
       }
       if (count === day) {
-        return false
+        return false;
       }
     }
   }
-  return true
+  return true;
 }
 
-const weights = [1,2,3,4,5,6,7,8,9,10], day = 1
+const weights = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  day = 1;
 
-let res = shipWithinDays(weights, day)
-console.log(res)
+let res = shipWithinDays(weights, day);
+console.log(res);

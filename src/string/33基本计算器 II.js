@@ -6,7 +6,7 @@
 
 // 注意：不允许使用任何将字符串作为数学表达式计算的内置函数，比如 eval() 。
 
-//  
+//
 
 // 示例 1：
 
@@ -46,7 +46,7 @@ var calculate = function (s) {
           stack.push(stack.pop() * num);
           break;
         default:
-          stack.push(stack.pop() / num | 0);
+          stack.push((stack.pop() / num) | 0);
           break;
       }
       num = 0;

@@ -11,7 +11,7 @@ var reverseList = function (head) {
  * @param {ListNode} head
  * @return {void} Do not return anything, modify head in-place instead.
  */
-var reorderList = function(head) {
+var reorderList = function (head) {
   let dummy = new ListNode(0);
   dummy.next = head;
   let fast = dummy,
@@ -43,4 +43,3 @@ var reorderList = function(head) {
   // 反转链表的后半段
   link(head, reverseList(temp), dummy);
 };
-

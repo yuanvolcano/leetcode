@@ -15,18 +15,18 @@
 //   return climbStairs(n - 1) + climbStairs(n - 2)
 // }
 
-const map = new Map()
+const map = new Map();
 
-function climbStairs (n) {
+function climbStairs(n) {
   if (n <= 3) {
-    return n
+    return n;
   }
-  if (map.has(n)) return map.get(n)
+  if (map.has(n)) return map.get(n);
 
-  let stairs = climbStairs(n - 1) + climbStairs(n - 2)
-  map.set(n, stairs)
-  return stairs
+  let stairs = climbStairs(n - 1) + climbStairs(n - 2);
+  map.set(n, stairs);
+  return stairs;
 }
 
-let res = climbStairs(10)
-console.log(res)
+let res = climbStairs(10);
+console.log(res);

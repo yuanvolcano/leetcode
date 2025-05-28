@@ -121,11 +121,11 @@ class LFUCache {
 const lfu = new LFUCache(2);
 lfu.put(1, 1);
 lfu.put(2, 2);
-console.log(lfu.get(1));      // 返回 1
-lfu.put(3, 3);               // 移除键 2
-console.log(lfu.get(2));      // 返回 -1（未找到）
-console.log(lfu.get(3));      // 返回 3
-lfu.put(4, 4);               // 移除键 1
-console.log(lfu.get(1));      // 返回 -1（未找到）
-console.log(lfu.get(3));      // 返回 3
-console.log(lfu.get(4));      // 返回 4
+console.log(lfu.get(1)); // 返回 1
+lfu.put(3, 3); // 移除键 2
+console.log(lfu.get(2)); // 返回 -1（未找到）
+console.log(lfu.get(3)); // 返回 3
+lfu.put(4, 4); // 移除键 1
+console.log(lfu.get(1)); // 返回 -1（未找到）
+console.log(lfu.get(3)); // 返回 3
+console.log(lfu.get(4)); // 返回 4

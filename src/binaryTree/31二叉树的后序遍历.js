@@ -1,31 +1,32 @@
 const postTraversal = function (root) {
-  const result = []
+  const result = [];
   const postOrder = (rootNode) => {
     if (!rootNode) {
-      return
+      return;
     }
-    postOrder(rootNode.left)
-    postOrder(rootNode.right)
-    result.push(rootNode.val)
-  }
+    postOrder(rootNode.left);
+    postOrder(rootNode.right);
+    result.push(rootNode.val);
+  };
 
   postOrder(root);
-  return result
-}
+  return result;
+};
 
 const postTraversal2 = function (root) {
-  const result = [], stack = []
+  const result = [],
+    stack = [];
   while (root || stack.length) {
     while (root) {
-      stack.push(root)
-      result.unshift(root.val)
-      root = root.right
+      stack.push(root);
+      result.unshift(root.val);
+      root = root.right;
     }
-    root = stack.pop()
-    root = root.left
+    root = stack.pop();
+    root = root.left;
   }
-  return result
-}
+  return result;
+};
 
 const root = {
   val: 1,
@@ -54,9 +55,9 @@ const root = {
       left: null,
       right: null,
     },
-  }
-}
+  },
+};
 
 // const result = postTraversal(root)
-const result = postTraversal2(root)
-console.log(result)
+const result = postTraversal2(root);
+console.log(result);

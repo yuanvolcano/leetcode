@@ -33,17 +33,14 @@ var countUnivalSubtrees = function (root) {
       return;
     }
     if (checkUnivalSubtrees(root, root.val)) {
-      count++
+      count++;
     }
-    countTraverse(root.left)
+    countTraverse(root.left);
     countTraverse(root.right);
-
-  }
+  };
   countTraverse(root);
   return count;
 };
-
-
 
 function checkUnivalSubtrees(root, val) {
   if (!root) {

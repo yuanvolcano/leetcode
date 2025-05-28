@@ -13,16 +13,15 @@
 // 时间复杂度 O(n)
 var findPeakElement = function (nums) {
   if (nums.length === 1) {
-    return 0
+    return 0;
   } else if (nums.length === 2) {
-    return nums[0] > nums[1] ? 0 : 1
+    return nums[0] > nums[1] ? 0 : 1;
   }
-  let len = nums.length
+  let len = nums.length;
   for (let i = 1; i < len - 1; i++) {
     if (nums[i] > nums[i - 1] && nums[i] > nums[i + 1]) {
-      return i
+      return i;
     }
   }
-  return nums[0] > nums[len - 1] ? 0 : len - 1
+  return nums[0] > nums[len - 1] ? 0 : len - 1;
 };
-

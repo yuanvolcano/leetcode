@@ -20,13 +20,15 @@
 // 输出：-1
 
 function search(nums: number[], target: number): number {
-  let left = 0, len = nums.length, right = len - 1;
+  let left = 0,
+    len = nums.length,
+    right = len - 1;
 
   while (left <= right) {
     let mid = Math.floor(left + (right - left) / 2);
 
     if (nums[mid] === target) {
-      return mid
+      return mid;
     } else if (nums[0] <= nums[mid]) {
       if (nums[0] <= target && target < nums[mid]) {
         right = mid - 1;
@@ -43,7 +45,7 @@ function search(nums: number[], target: number): number {
   }
 
   return -1;
-};
+}
 
-const result = search([4,5,6,7,0,1,2], 0);
-console.log('~~ result', result)
+const result = search([4, 5, 6, 7, 0, 1, 2], 0);
+console.log('~~ result', result);

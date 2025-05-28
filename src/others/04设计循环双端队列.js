@@ -11,7 +11,7 @@
 // int getRear() ：获得双端队列的最后一个元素。 如果双端队列为空，返回 -1 。
 // boolean isEmpty() ：若双端队列为空，则返回 true ，否则返回 false  。
 // boolean isFull() ：若双端队列满了，则返回 true ，否则返回 false 。
-//  
+//
 
 // 示例 1：
 

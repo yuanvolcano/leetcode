@@ -4,11 +4,11 @@
 
 const lowestCommonAncestor2 = function (root, p, q) {
   return find(root, p, q);
-}
+};
 
 const find = function (root, p, q) {
   if (root == null) {
-    return null
+    return null;
   }
 
   if (root.val === p || root.val === q) {
@@ -23,7 +23,7 @@ const find = function (root, p, q) {
   }
 
   return left !== null ? left : right;
-}
+};
 
 const root = {
   val: 6,
@@ -32,36 +32,36 @@ const root = {
     left: {
       val: 0,
       left: null,
-      right: null
+      right: null,
     },
     right: {
       val: 4,
       left: {
         val: 3,
         left: null,
-        right: null
+        right: null,
       },
       right: {
         val: 5,
         left: null,
-        right: null
-      }
-    }
+        right: null,
+      },
+    },
   },
   right: {
     val: 8,
     left: {
       val: 7,
       left: null,
-      right: null
+      right: null,
     },
     right: {
       val: 9,
       left: null,
-      right: null
-    }
+      right: null,
+    },
   },
-}
+};
 
-const result = lowestCommonAncestor(root, 2, 4)
-console.log(result)
+const result = lowestCommonAncestor(root, 2, 4);
+console.log(result);

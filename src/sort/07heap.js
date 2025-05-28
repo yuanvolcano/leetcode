@@ -1,5 +1,3 @@
 // 堆排序
 
-const heapSort = function () {
-  
-}
+const heapSort = function () {};

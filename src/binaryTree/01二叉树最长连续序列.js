@@ -26,16 +26,15 @@ var longestConsecutive = function (root) {
     }
 
     if (node.val - 1 === target) {
-      len++
+      len++;
     } else {
-      len = 1
+      len = 1;
     }
-
 
     findLong(node.left, len, node.val);
     findLong(node.right, len, node.val);
     res = Math.max(len, res);
-  }
+  };
 
   findLong(root, 1, Number.MIN_SAFE_INTEGER);
   return res;

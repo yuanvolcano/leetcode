@@ -43,7 +43,7 @@ function getMiddle(left, right) {
   if (left === null) {
     return left;
   }
-  let fast = slow = left;
+  let fast = (slow = left);
   while (fast !== right && fast.next !== right) {
     slow = slow.next;
     fast = fast.next.next;

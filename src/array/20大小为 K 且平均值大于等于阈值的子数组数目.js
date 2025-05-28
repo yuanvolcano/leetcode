@@ -3,29 +3,32 @@
 // 请你返回长度为 k 且平均值大于等于 threshold 的子数组数目。
 
 const numOfSubarrays = function (arr, k, threshold) {
-  const list = arr.map(item => item - threshold)
-  let count = 0
+  const list = arr.map((item) => item - threshold);
+  let count = 0;
   for (let i = 0, len = arr.length; i < len - k + 1; i++) {
     if (sum(list, i, i + k - 1) >= 0) {
-      count++
+      count++;
     }
   }
-  return count
-}
+  return count;
+};
 
-function sum (arr, startIndex, endIndex) {
-  let sum = 0
+function sum(arr, startIndex, endIndex) {
+  let sum = 0;
   for (let i = startIndex; i < endIndex + 1; i++) {
-    sum += arr[i]
+    sum += arr[i];
   }
-  return sum
+  return sum;
 }
 
 const numOfSubarrays2 = function (arr, k, threshold) {
-  let count = 0, sum = 0, len = arr.length, target = k * threshold
-  for (let i = 0; i <= k; i++) sum += arr[i]
+  let count = 0,
+    sum = 0,
+    len = arr.length,
+    target = k * threshold;
+  for (let i = 0; i <= k; i++) sum += arr[i];
 
-  if (sum >= target) count++
+  if (sum >= target) count++;
 
   for (let i = k; i < len; i++) {
     // 这两步是整个算法的关键
@@ -36,9 +39,11 @@ const numOfSubarrays2 = function (arr, k, threshold) {
     if (sums >= target) nums++;
   }
 
-  return count
-}
+  return count;
+};
 
-const arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 4
-const result = numOfSubarrays2(arr, k, threshold)
-console.log(result)
+const arr = [11, 13, 17, 23, 29, 31, 7, 5, 2, 3],
+  k = 3,
+  threshold = 4;
+const result = numOfSubarrays2(arr, k, threshold);
+console.log(result);

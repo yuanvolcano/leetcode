@@ -18,6 +18,6 @@ const bubbleSort = function (arr) {
     if (!flag) return arr;
   }
   return arr;
-}
+};
 
-module.exports = bubbleSort
+module.exports = bubbleSort;

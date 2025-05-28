@@ -5,17 +5,17 @@
 // 1 <= time[i] <= 500
 
 const numPairsDivisibleBy60 = function (time) {
-  let count = 0
+  let count = 0;
   for (let i = 0, len = times.length; i < len - 1; i++) {
     for (let j = i + 1; j < len; j++) {
       if ((times[i] + times[j]) % 60 === 0) {
-        count++
+        count++;
       }
     }
   }
-  return count
-}
+  return count;
+};
 
-const times = [30,20,150,100,40]
-let res = numPairsDivisibleBy60(times)
-console.log(res)
+const times = [30, 20, 150, 100, 40];
+let res = numPairsDivisibleBy60(times);
+console.log(res);

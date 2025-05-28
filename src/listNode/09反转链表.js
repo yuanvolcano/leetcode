@@ -1,6 +1,6 @@
 function ListNode(val, next) {
-  this.val = (val === undefined ? 0 : val)
-  this.next = (next === undefined ? null : next)
+  this.val = val === undefined ? 0 : val;
+  this.next = next === undefined ? null : next;
 }
 
 /**
@@ -23,7 +23,7 @@ const reverseList = function (head) {
   head.next.next = newHead;
   head.next = null;
   return newHead;
-}
+};
 
 const reverseList2 = function (head) {
   let pre = null;
@@ -36,7 +36,7 @@ const reverseList2 = function (head) {
   }
 
   return pre;
-}
+};
 
 var reverseList3 = function (head) {
   const dummy = new ListNode(-1);
@@ -49,7 +49,7 @@ var reverseList3 = function (head) {
     p.next = list;
     list.next = null;
     p = p.next;
-  }
+  };
   traverse(head);
   return dummy.next;
 };
@@ -58,14 +58,14 @@ const head1 = {
   val: 2,
   next: {
     val: 1,
-    next: null
-  }
-}
+    next: null,
+  },
+};
 
 const head2 = {
   val: null,
   next: null,
-}
+};
 
 const head3 = {
   val: 1,
@@ -77,12 +77,12 @@ const head3 = {
         val: 4,
         next: {
           val: 5,
-          next: null
-        }
-      }
-    }
-  }
-}
+          next: null,
+        },
+      },
+    },
+  },
+};
 
-const result = reverseList2(head3)
-console.log(result)
+const result = reverseList2(head3);
+console.log(result);

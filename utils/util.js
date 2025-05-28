@@ -22,8 +22,10 @@ export function buildPreTreeNode(list) {
 }
 
 export function buildListNode(list) {
-  const head = new ListNode(-1), len = list.length;
-  let temp = head, i = 0;
+  const head = new ListNode(-1),
+    len = list.length;
+  let temp = head,
+    i = 0;
   while (i < len) {
     temp.next = new ListNode(list[i]);
     temp = temp.next;

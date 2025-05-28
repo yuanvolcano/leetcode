@@ -15,8 +15,12 @@ var deleteDuplicates = function (head) {
   if (head === null) {
     return head;
   }
-  let lastVal = head.val, isRepeat = false;
-  let fast = head.next, slow = head, res = new ListNode(-1), temp = res;
+  let lastVal = head.val,
+    isRepeat = false;
+  let fast = head.next,
+    slow = head,
+    res = new ListNode(-1),
+    temp = res;
   while (fast) {
     if (fast.val !== lastVal) {
       if (!isRepeat) {
@@ -28,7 +32,7 @@ var deleteDuplicates = function (head) {
     } else {
       isRepeat = true;
     }
-    slow = fast
+    slow = fast;
     fast = fast.next;
   }
 

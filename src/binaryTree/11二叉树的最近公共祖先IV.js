@@ -27,7 +27,7 @@ var lowestCommonAncestor = function (root, nodes) {
     }
 
     return left !== null ? left : right;
-  }
+  };
 
   const list = [];
   for (let node of nodes) {

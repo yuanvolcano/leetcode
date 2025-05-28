@@ -6,9 +6,9 @@
 
 // 输入: "abcabcabcabc" 输出: True
 
-const repeatedSubstringPattern = function(s) {
-  return (s + s).slice(1, -1).indexOf(s) != -1
-}
+const repeatedSubstringPattern = function (s) {
+  return (s + s).slice(1, -1).indexOf(s) != -1;
+};
 
-let res = repeatedSubstringPattern('abcabcabcabc')
-console.log(res)
+let res = repeatedSubstringPattern('abcabcabcabc');
+console.log(res);

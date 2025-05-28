@@ -14,39 +14,41 @@
  * @return {number}
  */
 var rob = function (nums) {
-  const len = nums.length
-  const dp = Array.from(new Array(len), () => new Array(2).fill(0))
+  const len = nums.length;
+  const dp = Array.from(new Array(len), () => new Array(2).fill(0));
 
   // dp[i][k] i 代表房子，0 <= i < nums.length, k 代表抢或者不抢， k = 1 | 0
   for (let i = 0; i < len; i++) {
     if (i === 0) {
-      dp[i][0] = 0
-      dp[i][1] = nums[i]
-      continue
+      dp[i][0] = 0;
+      dp[i][1] = nums[i];
+      continue;
     }
     if (i === 1) {
-      dp[i][0] = dp[i - 1][1]
-      dp[i][1] = nums[i]
-      continue
+      dp[i][0] = dp[i - 1][1];
+      dp[i][1] = nums[i];
+      continue;
     }
-    dp[i][1] = Math.max(dp[i - 2][1] + nums[i], dp[i - 1][0] + nums[i])
-    dp[i][0] = Math.max(dp[i - 1][1], dp[i - 2][1])
+    dp[i][1] = Math.max(dp[i - 2][1] + nums[i], dp[i - 1][0] + nums[i]);
+    dp[i][0] = Math.max(dp[i - 1][1], dp[i - 2][1]);
   }
-  return Math.max(dp[len - 1][1], dp[len - 1][0])
+  return Math.max(dp[len - 1][1], dp[len - 1][0]);
 };
 
 var rob2 = function (nums) {
-  const len = nums.length
+  const len = nums.length;
   // dp_i 表示从 i 开始抢劫，抢到的最多钱
-  let dp_i_1 = 0, dp_i_2 = 0, dp_i = 0
-  for (let i = len - 1; i >=0; i--) {
-    dp_i = Math.max(dp_i_1, nums[i] + dp_i_2)
-    dp_i_2 = dp_i_1
-    dp_i_1 = dp_i
+  let dp_i_1 = 0,
+    dp_i_2 = 0,
+    dp_i = 0;
+  for (let i = len - 1; i >= 0; i--) {
+    dp_i = Math.max(dp_i_1, nums[i] + dp_i_2);
+    dp_i_2 = dp_i_1;
+    dp_i_1 = dp_i;
   }
-  return dp_i
-}
+  return dp_i;
+};
 
-const nums = [2, 1, 1, 2]
-const result = rob2(nums)
-console.log(result)
+const nums = [2, 1, 1, 2];
+const result = rob2(nums);
+console.log(result);

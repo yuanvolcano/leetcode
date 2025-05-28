@@ -17,17 +17,17 @@
 //   return res
 // }
 
-function partition (nums) {
-  let baseVal = nums[0]
+function partition(nums) {
+  let baseVal = nums[0];
   for (let i = 1, len = nums.length; i < len; i++) {
     if (nums[i] < baseVal) {
-      let item = nums.splice(i, 1)
-      nums.unshift(item)
+      let item = nums.splice(i, 1);
+      nums.unshift(item);
     }
   }
-  return nums
+  return nums;
 }
 
-const arr = [3, 1, 6, 2, 4, 5]
-const res = partition(arr)
-console.log(res)
+const arr = [3, 1, 6, 2, 4, 5];
+const res = partition(arr);
+console.log(res);

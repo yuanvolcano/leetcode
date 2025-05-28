@@ -6,15 +6,16 @@
  * @param {string} s
  * @return {boolean}
  */
-const isPalindrome = function(s) {
+const isPalindrome = function (s) {
   s = s.toLowerCase();
   s = s.replace(/[^a-z0-9]/g, '');
-  let start = 0, end = s.length - 1;
+  let start = 0,
+    end = s.length - 1;
   while (start <= end) {
     if (s[start++] === s[end--]) {
       continue;
     } else {
-      return false
+      return false;
     }
   }
   return true;

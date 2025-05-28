@@ -26,44 +26,50 @@
 //   return result
 // };
 
-function letterCombinations2 (digits) {
+function letterCombinations2(digits) {
   if (!digits) {
-    return []
+    return [];
   }
-  let numMap = new Map(), stack = [], result = [], tmp, tmpLen, i = 0, digitsLen = digits.length;
-  numMap.set('2', 'abc')
-  numMap.set('3', 'def')
-  numMap.set('4', 'ghi')
-  numMap.set('5', 'jkl')
-  numMap.set('6', 'mno')
-  numMap.set('7', 'pqrs')
-  numMap.set('8', 'tuv')
-  numMap.set('9', 'wxyz')
+  let numMap = new Map(),
+    stack = [],
+    result = [],
+    tmp,
+    tmpLen,
+    i = 0,
+    digitsLen = digits.length;
+  numMap.set('2', 'abc');
+  numMap.set('3', 'def');
+  numMap.set('4', 'ghi');
+  numMap.set('5', 'jkl');
+  numMap.set('6', 'mno');
+  numMap.set('7', 'pqrs');
+  numMap.set('8', 'tuv');
+  numMap.set('9', 'wxyz');
 
-  while(digits) {
-    tmp = numMap.get(digits[0])
-    tmpLen = tmp.length
-    result.length = 0
+  while (digits) {
+    tmp = numMap.get(digits[0]);
+    tmpLen = tmp.length;
+    result.length = 0;
 
     if (!stack.length) {
       for (i = 0; i < tmpLen; i++) {
-        stack.push(tmp[i])
+        stack.push(tmp[i]);
       }
     } else {
-      let item
-      while(stack.length) {
-        item = stack.shift()
+      let item;
+      while (stack.length) {
+        item = stack.shift();
         for (i = 0; i < tmpLen; i++) {
-          result.push(`${item}${tmp[i]}`)
+          result.push(`${item}${tmp[i]}`);
         }
       }
-      stack = [...result]
+      stack = [...result];
     }
-    digits = digits.slice(1)
+    digits = digits.slice(1);
   }
-  return digitsLen === 1 ? stack : result
+  return digitsLen === 1 ? stack : result;
 }
 
-let str = '234'
-let res = letterCombinations2(str)
-console.log(res)
+let str = '234';
+let res = letterCombinations2(str);
+console.log(res);

@@ -7,23 +7,22 @@
  */
 
 const preorder = function (root) {
-  const result = []
-  traverse(root, result)
-  return  result
-}
+  const result = [];
+  traverse(root, result);
+  return result;
+};
 
-function traverse (root, list) {
-  if (!root) return list
+function traverse(root, list) {
+  if (!root) return list;
 
   if (root.val !== null) {
-    list.push(root.val)
+    list.push(root.val);
   }
   while (root.children && root.children.length) {
-    const item = root.children.shift()
-    traverse(item, list)
+    const item = root.children.shift();
+    traverse(item, list);
   }
 }
-
 
 const tree = {
   val: 1,
@@ -32,22 +31,21 @@ const tree = {
       val: 3,
       children: [
         {
-          val: 5
+          val: 5,
         },
         {
-          val: 6
-        }
-      ]
+          val: 6,
+        },
+      ],
     },
     {
-      val: 2
+      val: 2,
     },
     {
-      val: 4
-    }
-  ]
-}
+      val: 4,
+    },
+  ],
+};
 
-const res = preorder(tree)
-console.log(res)
-
+const res = preorder(tree);
+console.log(res);

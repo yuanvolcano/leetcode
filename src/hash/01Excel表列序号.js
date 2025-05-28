@@ -30,15 +30,17 @@ var titleToNumber = function (columnTitle) {
     X: 24,
     Y: 25,
     Z: 26,
-  }
+  };
 
-  let prex = 1, len = columnTitle.length, res = map[columnTitle[len - 1]]
+  let prex = 1,
+    len = columnTitle.length,
+    res = map[columnTitle[len - 1]];
   for (let i = len - 2; i >= 0; i--) {
-    prex *= 26
-    res += map[columnTitle[i]] * prex
+    prex *= 26;
+    res += map[columnTitle[i]] * prex;
   }
-  return res
+  return res;
 };
 
-const res1 = titleToNumber('ANCY')
-console.log(res1)
+const res1 = titleToNumber('ANCY');
+console.log(res1);

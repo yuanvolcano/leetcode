@@ -11,7 +11,7 @@
  * @param {number} right
  * @return {ListNode}
  */
-let successor = null
+let successor = null;
 // 反转以 head 为起点的 n 个节点，返回新的头结点
 var reverseN = function (head, n) {
   if (n === 1) {

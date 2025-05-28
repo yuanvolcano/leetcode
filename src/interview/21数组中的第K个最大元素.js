@@ -8,11 +8,11 @@
  * @return {number}
  */
 var findKthLargest = function (nums, k) {
-  nums.sort((a, b) => b - a)
-  return nums[k - 1]
+  nums.sort((a, b) => b - a);
+  return nums[k - 1];
 };
 
-const nums = [3, 2, 1, 5, 6, 4]
-const k = 2
-const result = findKthLargest(nums, k)
-console.log(result)
+const nums = [3, 2, 1, 5, 6, 4];
+const k = 2;
+const result = findKthLargest(nums, k);
+console.log(result);

@@ -17,43 +17,43 @@
 // ]
 
 const levelOrder = function (root) {
-  const res = []
-  if (!root) return res
-  const stack = []
-  stack.push(root)
-  let stackLen, item
+  const res = [];
+  if (!root) return res;
+  const stack = [];
+  stack.push(root);
+  let stackLen, item;
   while (stack.length) {
     // 保存当前 level 的长度
-    stackLen = stack.length
-    res.push([])
+    stackLen = stack.length;
+    res.push([]);
     for (let i = 0; i < stackLen; i++) {
-      item = stack.shift()
-      res[res.length - 1].push(item.val)
-      if (item.left) stack.push(item.left)
-      if (item.right) stack.push(item.right)
+      item = stack.shift();
+      res[res.length - 1].push(item.val);
+      if (item.left) stack.push(item.left);
+      if (item.right) stack.push(item.right);
     }
   }
-  return res
-}
+  return res;
+};
 
 const root = {
   val: 7,
   left: {
     val: 3,
     left: null,
-    right: null
+    right: null,
   },
   right: {
     val: 15,
     left: {
       val: 9,
       left: null,
-      right: null
+      right: null,
     },
     right: {
       val: 20,
       left: null,
-      right: null
-    }
-  }
-}
+      right: null,
+    },
+  },
+};

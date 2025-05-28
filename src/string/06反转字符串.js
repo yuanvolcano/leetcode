@@ -4,17 +4,17 @@
 
 // 输入：["h","e","l","l","o"] 输出：["o","l","l","e","h"]
 
-function reverse (s) {
-  let i = 0, x = s.length - 1
+function reverse(s) {
+  let i = 0,
+    x = s.length - 1;
 
   while (i < x) {
-    [s[i], s[x]] = [s[x], s[i]]
-    i++
-    x--
+    [s[i], s[x]] = [s[x], s[i]];
+    i++;
+    x--;
   }
 }
 
-
-let s = ["h","e","l","l","o"]
-let res = reverse(s)
-console.log(s)
+let s = ['h', 'e', 'l', 'l', 'o'];
+let res = reverse(s);
+console.log(s);

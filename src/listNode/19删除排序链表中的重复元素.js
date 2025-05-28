@@ -13,16 +13,17 @@
  */
 var deleteDuplicates = function (head) {
   if (head === null) {
-    return head
+    return head;
   }
-  let fast = head, res = slow = head
+  let fast = head,
+    res = (slow = head);
   while (fast) {
     if (fast.val !== slow.val) {
-      slow.next = fast
-      slow = slow.next
+      slow.next = fast;
+      slow = slow.next;
     }
-    fast = fast.next
+    fast = fast.next;
   }
-  slow.next = null
-  return res
+  slow.next = null;
+  return res;
 };

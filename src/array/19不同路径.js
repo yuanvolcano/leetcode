@@ -4,22 +4,23 @@
 
 // 问总共有多少条不同的路径？
 
-const map = new Map()
+const map = new Map();
 const uniquePaths = function (m, n) {
   if (m === 1 || n === 1) {
-    return 1
+    return 1;
   }
-  const mapKey = `${m},${n}`
-  if (map.has(mapKey)) return map.get(mapKey)
-  const mirroKey = `${n},${m}`
-  if (map.has(mirroKey)) return map.get(mirroKey)
+  const mapKey = `${m},${n}`;
+  if (map.has(mapKey)) return map.get(mapKey);
+  const mirroKey = `${n},${m}`;
+  if (map.has(mirroKey)) return map.get(mirroKey);
 
-  const uniqueVal = uniquePaths(m - 1, n) + uniquePaths(m, n - 1)
-  map.set(mapKey, uniqueVal)
+  const uniqueVal = uniquePaths(m - 1, n) + uniquePaths(m, n - 1);
+  map.set(mapKey, uniqueVal);
 
-  return uniqueVal
-}
+  return uniqueVal;
+};
 
-const vertical = 23, horizon = 12
-const result = uniquePaths(vertical, horizon)
-console.log(result)
+const vertical = 23,
+  horizon = 12;
+const result = uniquePaths(vertical, horizon);
+console.log(result);

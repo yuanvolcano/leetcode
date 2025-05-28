@@ -23,37 +23,39 @@
 
 // JSON.stringify 序列化子树，通过 Map 实例，如果不存在子树，set 为 1，如果存在子树，在原来基础上 +1
 const findDuplicateSubtrees = function (root) {
-  if (!root) return []
-  const treeMap = new Map(), result = []
-  const stacks = [root]
+  if (!root) return [];
+  const treeMap = new Map(),
+    result = [];
+  const stacks = [root];
   while (stacks.length) {
-    const item = stacks.shift()
-    const stringifyItem = JSON.stringify(item)
-    const curTreeVal = treeMap.get(stringifyItem)
+    const item = stacks.shift();
+    const stringifyItem = JSON.stringify(item);
+    const curTreeVal = treeMap.get(stringifyItem);
     if (!curTreeVal) {
-      treeMap.set(stringifyItem, 1)
+      treeMap.set(stringifyItem, 1);
     } else {
-      treeMap.set(stringifyItem, curTreeVal + 1)
+      treeMap.set(stringifyItem, curTreeVal + 1);
     }
     if (item.left) {
-      stacks.push(item.left)
+      stacks.push(item.left);
     }
     if (item.right) {
-      stacks.push(item.right)
+      stacks.push(item.right);
     }
   }
 
   for (const item of treeMap.keys()) {
     if (treeMap.get(item) > 1) {
-      result.push(JSON.parse(item))
+      result.push(JSON.parse(item));
     }
   }
-  return result
-}
+  return result;
+};
 
 const findDuplicateSubtrees = function (root) {
   if (!root) return [];
-  const treeMap = new Map(), result = [];
+  const treeMap = new Map(),
+    result = [];
 
   const traverse = (node) => {
     if (node === null) {
@@ -72,8 +74,8 @@ const findDuplicateSubtrees = function (root) {
       treeMap.set(stringifyItem, curTreeVal + 1);
     }
     return stringifyItem;
-  }
+  };
 
   traverse(root);
   return result;
-}
+};

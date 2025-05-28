@@ -28,16 +28,16 @@ const countingSort = function (arr) {
   }
 
   return arr;
-}
+};
 
-function findMaxVal (arr) {
-  let maxVal = arr[0]
+function findMaxVal(arr) {
+  let maxVal = arr[0];
   for (let i = 1, len = arr.length; i < len; i++) {
     if (arr[i] > maxVal) {
-      maxVal = arr[i]
+      maxVal = arr[i];
     }
   }
-  return maxVal
+  return maxVal;
 }
 
-module.exports = countingSort
+module.exports = countingSort;

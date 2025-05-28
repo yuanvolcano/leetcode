@@ -4,7 +4,6 @@
 
 // 你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
 
-
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
@@ -18,8 +17,10 @@
  * @return {ListNode}
  */
 var reverseKGroup2 = function (head, k) {
-  const stack = [], res = new ListNode(0);
-  let curList = null, temp = res;;
+  const stack = [],
+    res = new ListNode(0);
+  let curList = null,
+    temp = res;
   while (head) {
     if (!curList || curList.length >= k) {
       curList = [];
@@ -43,33 +44,35 @@ var reverseKGroup2 = function (head, k) {
   return res.next;
 };
 
-
 // 反转前 [a, b) 之间的链表
 var reverse = function (a, b) {
-  let pre = null, cur = a, next
+  let pre = null,
+    cur = a,
+    next;
   while (cur !== b) {
-    next = cur.next
-    cur.next = pre
-    pre = cur
-    cur = next
+    next = cur.next;
+    cur.next = pre;
+    pre = cur;
+    cur = next;
   }
   // 返回反转后的头结点
-  return pre
-}
+  return pre;
+};
 
 var reverseKGroup = function (head, k) {
-  let a = head, b = head
+  let a = head,
+    b = head;
   for (let i = 0; i < k; i++) {
     // 不足 k 个返回头结点
-    if (b == null) return head
-    b = b.next
+    if (b == null) return head;
+    b = b.next;
   }
   // 反转前 k 个元素
-  let newHead = reverse(a, b)
+  let newHead = reverse(a, b);
   // 递归反转后续链表并连接起来
-  a.next = reverseKGroup(b, k)
-  return newHead
-}
+  a.next = reverseKGroup(b, k);
+  return newHead;
+};
 
 // const head = {
 //   val: 1,
@@ -91,5 +94,5 @@ var reverseKGroup = function (head, k) {
 //   }
 // }
 
-const result = reverseKGroup(head, 1)
-console.log(result)
+const result = reverseKGroup(head, 1);
+console.log(result);

@@ -5,20 +5,19 @@
 // canConstruct("aa", "aab") -> true
 
 const canConstruct = function (ransom, magazine) {
-  const ransomList = ransom.split('')
-  const magazineList = magazine.split('')
-  let item = ''
+  const ransomList = ransom.split('');
+  const magazineList = magazine.split('');
+  let item = '';
   while (ransomList.length) {
-    item = ransomList.shift()
-    let index = magazineList.findIndex(str => str === item)
-    if (index > -1) magazineList.splice(index, 1)
+    item = ransomList.shift();
+    let index = magazineList.findIndex((str) => str === item);
+    if (index > -1) magazineList.splice(index, 1);
     else {
-      return false
+      return false;
     }
   }
-  return true
-}
+  return true;
+};
 
-
-let res = canConstruct("aa", "aab")
-console.log(res)
+let res = canConstruct('aa', 'aab');
+console.log(res);

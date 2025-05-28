@@ -12,25 +12,26 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
- var rightSideView = function(root) {
+var rightSideView = function (root) {
   if (!root) {
-      return [];
+    return [];
   }
-  const stack = [root], res = [];
+  const stack = [root],
+    res = [];
   while (stack.length) {
-      const stackLen = stack.length;
-      for (let i = 0; i < stackLen; i++) {
-          const item = stack.shift();
-          if (i === stackLen - 1) {
-              res.push(item.val);
-          }
-          if (item.left) {
-              stack.push(item.left);
-          }
-          if (item.right) {
-              stack.push(item.right);
-          }
+    const stackLen = stack.length;
+    for (let i = 0; i < stackLen; i++) {
+      const item = stack.shift();
+      if (i === stackLen - 1) {
+        res.push(item.val);
       }
+      if (item.left) {
+        stack.push(item.left);
+      }
+      if (item.right) {
+        stack.push(item.right);
+      }
+    }
   }
   return res;
 };

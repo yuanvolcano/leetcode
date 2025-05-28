@@ -3,36 +3,36 @@
 // 例子：1. s = "leetcode" 返回 0；
 //      2. s = "loveleetcode", 返回 2。
 
-var firstUniqChar = function(s) {
-  const obj = {}
-  let index = -1
+var firstUniqChar = function (s) {
+  const obj = {};
+  let index = -1;
   for (let i = 0, len = s.length; i < len; i++) {
     if (obj[s[i]] === void 0) {
-      obj[s[i]] = i
+      obj[s[i]] = i;
     } else {
-      obj[s[i]] = -1
+      obj[s[i]] = -1;
     }
   }
-  const list = Object.keys(obj)
+  const list = Object.keys(obj);
   for (let j = 0, oLen = list.length; j < oLen; j++) {
     if (obj[list[j]] === -1) {
-      continue
+      continue;
     }
     if (obj[list[j]] < index || index === -1) {
-      index = obj[list[j]]
+      index = obj[list[j]];
     }
   }
-  return index
-}
+  return index;
+};
 
-var firstUniqChar2 = function(s) {
+var firstUniqChar2 = function (s) {
   for (let i = 0, len = s.length; i < len; i++) {
     if (s.indexOf(s[i]) === s.lastIndexOf(s[i])) {
-      return i
+      return i;
     }
   }
   return -1;
-}
+};
 
-let res = firstUniqChar('cc')
-console.log(res)
+let res = firstUniqChar('cc');
+console.log(res);

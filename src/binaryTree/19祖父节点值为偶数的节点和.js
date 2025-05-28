@@ -4,38 +4,38 @@
 // 如果不存在祖父节点值为偶数的节点，那么返回 0 。
 
 const sumEvenGrandparent = function (root) {
-  const arr = []
-  findGrandRoot(root, arr)
-  let sum = 0
+  const arr = [];
+  findGrandRoot(root, arr);
+  let sum = 0;
   for (let item of arr) {
-    sum += item
+    sum += item;
   }
-  return sum
-}
+  return sum;
+};
 
-function findGrandRoot (node, arr = []) {
+function findGrandRoot(node, arr = []) {
   if (node && node.val % 2 === 0) {
     if (node.left) {
       if (node.left.right) {
-        arr.push(node.left.right.val)
+        arr.push(node.left.right.val);
       }
       if (node.left.left) {
-        arr.push(node.left.left.val)
+        arr.push(node.left.left.val);
       }
-      findGrandRoot(node.left, arr)
+      findGrandRoot(node.left, arr);
     }
     if (node.right) {
       if (node.right.right) {
-        arr.push(node.right.right.val)
+        arr.push(node.right.right.val);
       }
       if (node.right.left) {
-        arr.push(node.right.left.val)
+        arr.push(node.right.left.val);
       }
-      findGrandRoot(node.right, arr)
+      findGrandRoot(node.right, arr);
     }
   } else if (node) {
-    findGrandRoot(node.left, arr)
-    findGrandRoot(node.right, arr)
+    findGrandRoot(node.left, arr);
+    findGrandRoot(node.right, arr);
   }
 }
 
@@ -48,29 +48,29 @@ const treeObj = {
       left: {
         val: 9,
         left: null,
-        right: null
-      }
+        right: null,
+      },
     },
     right: {
       val: 7,
       left: {
         val: 9,
         left: null,
-        right: null
+        right: null,
       },
       right: {
         val: 4,
         left: null,
-        right: null
-      }
-    }
+        right: null,
+      },
+    },
   },
   right: {
     val: 8,
     left: {
       val: 1,
       left: null,
-      right: null
+      right: null,
     },
     right: {
       val: 3,
@@ -78,10 +78,10 @@ const treeObj = {
       right: {
         val: 5,
         left: null,
-        right: null
-      }
-    }
-  }
-}
-const res = sumEvenGrandparent(treeObj)
-console.log(res)
+        right: null,
+      },
+    },
+  },
+};
+const res = sumEvenGrandparent(treeObj);
+console.log(res);

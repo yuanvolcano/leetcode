@@ -15,9 +15,9 @@
 //    15   7
 
 var minDepth = function (root) {
-  if(!root) return 0
-  let left = minDepth(root.left)
-  let right = minDepth(root.right)
+  if (!root) return 0;
+  let left = minDepth(root.left);
+  let right = minDepth(root.right);
 
-  return (left === 0 || right === 0) ? 1 + left + right : 1 + Math.min(left, right)
-}
+  return left === 0 || right === 0 ? 1 + left + right : 1 + Math.min(left, right);
+};

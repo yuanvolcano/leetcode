@@ -14,17 +14,17 @@
 var moveZeroes = function (nums) {
   for (let len = nums.length, i = len - 1; i >= 0; i--) {
     if (nums[i] !== 0) {
-      continue
+      continue;
     }
-    nums.splice(i, 1)
-    nums.push(0)
+    nums.splice(i, 1);
+    nums.push(0);
   }
 };
 
 var moveZeroes2 = function (nums) {
-  nums.sort((a,b) => b ? 0: -1)
+  nums.sort((a, b) => (b ? 0 : -1));
 };
 
-const nums = [0,1,0,3,12]
-moveZeroes(nums)
-console.log(nums)
+const nums = [0, 1, 0, 3, 12];
+moveZeroes(nums);
+console.log(nums);

@@ -14,13 +14,13 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var rotate = function (nums, k) {
-  k = k % nums.length
-  const leftList = nums.splice(nums.length - k, k)
-  nums.unshift(...leftList)
-  return nums
+  k = k % nums.length;
+  const leftList = nums.splice(nums.length - k, k);
+  nums.unshift(...leftList);
+  return nums;
 };
 
-const nums = [1,2]
-const k = 5
-const result = rotate(nums, k)
-console.log(result)
+const nums = [1, 2];
+const k = 5;
+const result = rotate(nums, k);
+console.log(result);

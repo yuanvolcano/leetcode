@@ -13,43 +13,43 @@
 // 第四次翻转后 (k=3): A = [1, 2, 3, 4]，此时已完成排序。
 
 const pancakeSort = function (arr) {
-  const result = []
-  sort(arr, arr.length, result)
-  return result
-}
+  const result = [];
+  sort(arr, arr.length, result);
+  return result;
+};
 
-function sort (arr, n, list) {
-  if (n === 1) return
+function sort(arr, n, list) {
+  if (n === 1) return;
 
   // 找到当前最大值
-  let maxIndex = -1
-  let maxVal = -Infinity
+  let maxIndex = -1;
+  let maxVal = -Infinity;
   for (let i = 0; i < n; i++) {
     if (arr[i] > maxVal) {
-      maxIndex = i
-      maxVal = arr[i]
+      maxIndex = i;
+      maxVal = arr[i];
     }
   }
 
   // 把找到的最大的值反转到最上面
-  reserve(arr, 0, maxIndex)
+  reserve(arr, 0, maxIndex);
   // 添加操作索引
-  list.push(maxIndex + 1)
+  list.push(maxIndex + 1);
   // 把最上面的反转到底部
-  reserve(arr, 0, n - 1)
-  list.push(n)
+  reserve(arr, 0, n - 1);
+  list.push(n);
 
-  sort(arr, n - 1, list)
+  sort(arr, n - 1, list);
 }
 
-function reserve (arr, i, j) {
+function reserve(arr, i, j) {
   while (i < j) {
-    [arr[i], arr[j]] = [arr[j], arr[i]]
-    i++
-    j--
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+    i++;
+    j--;
   }
 }
 
-const list = [3, 2, 4, 1]
-const result = pancakeSort(list)
-console.log(result)
+const list = [3, 2, 4, 1];
+const result = pancakeSort(list);
+console.log(result);

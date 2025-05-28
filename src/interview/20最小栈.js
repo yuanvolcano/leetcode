@@ -1,37 +1,37 @@
-var MinStack = function() {
-  this.stack = []
-  this.minStack = [Infinity]
+var MinStack = function () {
+  this.stack = [];
+  this.minStack = [Infinity];
 };
 
 /**
  * @param {number} val
  * @return {void}
  */
-MinStack.prototype.push = function(val) {
-  this.stack.push(val)
-  this.minStack.push(Math.min(this.minStack[this.minStack.length - 1], val))
+MinStack.prototype.push = function (val) {
+  this.stack.push(val);
+  this.minStack.push(Math.min(this.minStack[this.minStack.length - 1], val));
 };
 
 /**
  * @return {void}
  */
-MinStack.prototype.pop = function() {
-  this.stack.pop()
-  this.minStack.pop()
+MinStack.prototype.pop = function () {
+  this.stack.pop();
+  this.minStack.pop();
 };
 
 /**
  * @return {number}
  */
-MinStack.prototype.top = function() {
-  return this.stack[this.stack.length - 1]
+MinStack.prototype.top = function () {
+  return this.stack[this.stack.length - 1];
 };
 
 /**
  * @return {number}
  */
-MinStack.prototype.getMin = function() {
-  return this.minStack[this.minStack.length - 1]
+MinStack.prototype.getMin = function () {
+  return this.minStack[this.minStack.length - 1];
 };
 
 /**
@@ -43,10 +43,10 @@ MinStack.prototype.getMin = function() {
  * var param_4 = obj.getMin()
  */
 
-const obj = new MinStack()
-obj.push(0)
-obj.push(1)
-obj.push(0)
-obj.getMin()
-obj.pop()
-obj.getMin()
+const obj = new MinStack();
+obj.push(0);
+obj.push(1);
+obj.push(0);
+obj.getMin();
+obj.pop();
+obj.getMin();

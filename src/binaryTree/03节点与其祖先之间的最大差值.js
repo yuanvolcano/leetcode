@@ -14,24 +14,24 @@
  * @param {TreeNode} root
  * @return {number}
  */
- var maxAncestorDiff = function (root) {
+var maxAncestorDiff = function (root) {
   let res = 0;
 
   const findMinMax = (node) => {
-      if (!node) {
-          return [Number.MAX_SAFE_INTEGER, Number.MIN_SAFE_INTEGER];
-      }
+    if (!node) {
+      return [Number.MAX_SAFE_INTEGER, Number.MIN_SAFE_INTEGER];
+    }
 
-      const leftMinMax = findMinMax(node.left);
-      const rightMinMax = findMinMax(node.right);
+    const leftMinMax = findMinMax(node.left);
+    const rightMinMax = findMinMax(node.right);
 
-      const minVal = Math.min(node.val, leftMinMax[0], rightMinMax[0]);
-      const maxVal = Math.max(node.val, leftMinMax[1], rightMinMax[1]);
+    const minVal = Math.min(node.val, leftMinMax[0], rightMinMax[0]);
+    const maxVal = Math.max(node.val, leftMinMax[1], rightMinMax[1]);
 
-      res = Math.max(res, maxVal - node.val, node.val - minVal);
+    res = Math.max(res, maxVal - node.val, node.val - minVal);
 
-      return [minVal, maxVal];
-  }
+    return [minVal, maxVal];
+  };
 
   findMinMax(root);
   return res;

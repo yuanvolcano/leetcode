@@ -9,11 +9,12 @@
  * @return {TreeNode}
  */
 var lowestCommonAncestor = function (node, p, q) {
-  let hasP = false, hasQ = false;
+  let hasP = false,
+    hasQ = false;
 
-  function find (root, p, q) {
+  function find(root, p, q) {
     if (root === null) {
-      return null
+      return null;
     }
 
     let left = find(root.left, p, q);
@@ -44,8 +45,6 @@ var lowestCommonAncestor = function (node, p, q) {
   return null;
 };
 
-
-
 const root = {
   val: 6,
   left: {
@@ -53,37 +52,36 @@ const root = {
     left: {
       val: 0,
       left: null,
-      right: null
+      right: null,
     },
     right: {
       val: 4,
       left: {
         val: 3,
         left: null,
-        right: null
+        right: null,
       },
       right: {
         val: 5,
         left: null,
-        right: null
-      }
-    }
+        right: null,
+      },
+    },
   },
   right: {
     val: 8,
     left: {
       val: 7,
       left: null,
-      right: null
+      right: null,
     },
     right: {
       val: 9,
       left: null,
-      right: null
-    }
+      right: null,
+    },
   },
 };
 
-
-const result = lowestCommonAncestor(root, 2, 8)
+const result = lowestCommonAncestor(root, 2, 8);
 console.log(result);

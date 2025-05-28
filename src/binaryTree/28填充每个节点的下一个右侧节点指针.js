@@ -16,23 +16,23 @@
 // 采用层序遍历
 var connect = function (root) {
   if (!root) {
-    return root
+    return root;
   }
-  const stack = [root]
-  let stackLen, item
+  const stack = [root];
+  let stackLen, item;
   while (stack.length) {
-    stackLen = stack.length
+    stackLen = stack.length;
     for (let i = 0; i < stackLen; i++) {
-      item = stack.shift()
+      item = stack.shift();
       if (i !== stackLen - 1) {
-        item.next = stack[0]
+        item.next = stack[0];
       }
-      if (item.left) stack.push(item.left)
-      if (item.right) stack.push(item.right)
+      if (item.left) stack.push(item.left);
+      if (item.right) stack.push(item.right);
     }
   }
 
-  return root
+  return root;
 };
 
 // 采用三叉树
@@ -46,11 +46,11 @@ var connect2 = function (root) {
     traverse(node1.left, node1.right);
     traverse(node2.left, node2.right);
     traverse(node1.right, node1.left);
-  }
+  };
 
   if (!root) {
     return root;
   }
   traverse(root.left, root.right);
   return root;
-}
+};

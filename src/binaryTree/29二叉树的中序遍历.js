@@ -15,35 +15,35 @@ var inorderTraversal = function (root) {
 
   const inOrder = (rootNode) => {
     if (!rootNode) {
-      return
+      return;
     }
-    inOrder(rootNode.left)
-    result.push(rootNode.val)
-    inOrder(rootNode.right)
-  }
+    inOrder(rootNode.left);
+    result.push(rootNode.val);
+    inOrder(rootNode.right);
+  };
 
-  inOrder(root)
+  inOrder(root);
 
-  return result
+  return result;
 };
 
 // 中序遍历
 var inorderTraversal2 = function (root) {
-  const stack = [], res = []
+  const stack = [],
+    res = [];
 
   while (root || stack.length) {
     while (root) {
-      stack.push(root)
-      root = root.left
+      stack.push(root);
+      root = root.left;
     }
-    root = stack.pop()
-    res.push(root.val)
-    root = root.right
+    root = stack.pop();
+    res.push(root.val);
+    root = root.right;
   }
 
-  return res
-}
-
+  return res;
+};
 
 const root = {
   val: 1,
@@ -72,8 +72,8 @@ const root = {
       left: null,
       right: null,
     },
-  }
-}
+  },
+};
 
-const result1 = inorderTraversal(root)
-console.log(result1)
+const result1 = inorderTraversal(root);
+console.log(result1);

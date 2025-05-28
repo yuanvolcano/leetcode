@@ -6,24 +6,24 @@
 
 // 统计单个字符出现的次数，出现奇数次数的字符数不能超过1
 const canPermutePalindrome = function (s) {
-  const strNum = {}
+  const strNum = {};
   for (let i = 0, len = s.length; i < len; i++) {
     if (!strNum[s[i]]) {
-      strNum[s[i]] = 1
+      strNum[s[i]] = 1;
     } else {
-      strNum[s[i]] += 1
+      strNum[s[i]] += 1;
     }
   }
-  let index = 0
-  let nums = Object.values(strNum)
+  let index = 0;
+  let nums = Object.values(strNum);
   for (let j = 0, nLen = nums.length; j < nLen; j++) {
     if (nums[j] % 2 && ++index > 1) {
-      return false
+      return false;
     }
   }
-  return true
-}
+  return true;
+};
 
-let str = 'tactcoa'
-let res = canPermutePalindrome(str)
-console.log(res)
+let str = 'tactcoa';
+let res = canPermutePalindrome(str);
+console.log(res);

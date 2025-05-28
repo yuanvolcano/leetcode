@@ -11,8 +11,9 @@
  */
 
 // 通过对象，统计处各个数出现的最大次数，然后找出最大的那个
-const majorityElement1 = function(nums) {
-  const res = {}, n = nums.length;
+const majorityElement1 = function (nums) {
+  const res = {},
+    n = nums.length;
   for (let i = 0; i < n; i++) {
     if (!res[nums[i]]) {
       res[nums[i]] = 0;
@@ -29,8 +30,9 @@ const majorityElement1 = function(nums) {
 };
 
 // 摩尔投票法：从第一个数开始算起，初始值为 1，遇到相同的 +1，遇到不同的 -1，减到0换下个数重新开始计数
-const majorityElement1 = function(nums) {
-  let count = 1, diff = nums[0];
+const majorityElement1 = function (nums) {
+  let count = 1,
+    diff = nums[0];
   for (let i = 1, len = nums.length; i < len; i++) {
     if (diff === nums[i]) {
       count++;

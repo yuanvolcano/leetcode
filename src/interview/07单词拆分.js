@@ -8,7 +8,6 @@
 // 输出: true
 // 解释: 返回 true 因为 "leetcode" 可以由 "leet" 和 "code" 拼接成。
 
-
 // 采用动态规划：
 
 // dp[i]含义：子串s[0,i]是否满足，为boolean
@@ -24,14 +23,14 @@
  * @return {boolean}
  */
 const wordBreak = function (s, wordDict) {
-  const set = new Set(wordDict)
-  const len = s.length
+  const set = new Set(wordDict);
+  const len = s.length;
   const dp = new Array(len + 1).fill(false);
   dp[0] = true;
   for (let i = 1; i <= len; i++) {
     for (let j = 0; j < i; j++) {
       if (dp[j] && set.has(s.slice(j, i))) {
-        dp[i] = true
+        dp[i] = true;
         break;
       }
     }
@@ -39,8 +38,8 @@ const wordBreak = function (s, wordDict) {
   return dp[len];
 };
 
-const str = 'leetcode'
-const list = ["leet", "code"]
+const str = 'leetcode';
+const list = ['leet', 'code'];
 
-const result = wordBreak(str, list)
-console.log(result)
+const result = wordBreak(str, list);
+console.log(result);

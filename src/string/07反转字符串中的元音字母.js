@@ -2,23 +2,24 @@
 
 // 输入: "hello" 输出: "holle"
 
-const reverseVowels = function(s) {
-  const originList = s.split('')
-  const reg = /[aeiou]/i
-  let i = 0, x = originList.length - 1
+const reverseVowels = function (s) {
+  const originList = s.split('');
+  const reg = /[aeiou]/i;
+  let i = 0,
+    x = originList.length - 1;
   while (i < x) {
     if (reg.test(originList[i]) && reg.test(originList[x])) {
-      [originList[i], originList[x]] = [originList[x], originList[i]]
-      i++
-      x--
+      [originList[i], originList[x]] = [originList[x], originList[i]];
+      i++;
+      x--;
     } else if (!reg.test(originList[i])) {
-      i++
+      i++;
     } else if (!reg.test(originList[x])) {
-      x--
+      x--;
     }
   }
-  return originList.join('')
-}
+  return originList.join('');
+};
 
-let res = reverseVowels('hello')
-console.log(res)
+let res = reverseVowels('hello');
+console.log(res);

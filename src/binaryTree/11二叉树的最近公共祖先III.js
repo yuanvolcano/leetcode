@@ -13,14 +13,15 @@ var lowestCommonAncestor = function (p, q) {
     if (parentSet.has(q)) {
       return q;
     }
-    q = q.parent
+    q = q.parent;
   }
 
   return null;
 };
 
 var lowestCommonAncestor = function (p, q) {
-  let a = p, b = q;
+  let a = p,
+    b = q;
   while (a !== b) {
     if (a === null) {
       a = q;

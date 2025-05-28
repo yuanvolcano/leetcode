@@ -17,25 +17,27 @@
  */
 var maxProfit = function (k, prices) {
   if (!prices.length) {
-    return
+    return;
   }
-  const len = prices.length
-  const dp = Array.from(new Array(len), () => Array.from(new Array(k + 1), () => new Array(2).fill(0)))
+  const len = prices.length;
+  const dp = Array.from(new Array(len), () =>
+    Array.from(new Array(k + 1), () => new Array(2).fill(0)),
+  );
 
   for (let i = 0; i < len; i++) {
     for (let j = 1; j <= k; j++) {
       // base case
       if (i === 0) {
-        dp[i][j][0] = 0
-        dp[i][j][1] = -prices[i]
-        continue
+        dp[i][j][0] = 0;
+        dp[i][j][1] = -prices[i];
+        continue;
       }
 
-      dp[i][j][0] = Math.max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i])
-      dp[i][j][1] = Math.max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i])
+      dp[i][j][0] = Math.max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i]);
+      dp[i][j][1] = Math.max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i]);
     }
   }
-  return dp[len - 1][k][0]
+  return dp[len - 1][k][0];
 
   // let max = dp[len - 1][0][0]
   // for (let m = 1; m <= k; m++) {
@@ -44,8 +46,9 @@ var maxProfit = function (k, prices) {
   //   }
   // }
   // return max
-}
+};
 
-const k = 2, prices = [2, 4, 1]
-const result = maxProfit(k, prices)
-console.log(result)
+const k = 2,
+  prices = [2, 4, 1];
+const result = maxProfit(k, prices);
+console.log(result);

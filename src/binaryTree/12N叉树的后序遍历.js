@@ -2,45 +2,45 @@
 
 // 递归法
 const postorder = function (root) {
-  if (!root) return []
+  if (!root) return [];
 
-  const res = []
-  pushChild(root, res)
-  return res
-}
+  const res = [];
+  pushChild(root, res);
+  return res;
+};
 
 function pushChild(node, arr = []) {
   if (node.val !== null) {
-    arr.unshift(node.val)
+    arr.unshift(node.val);
   }
   while (node.children && node.children.length) {
-    let item = node.children.pop()
-    pushChild(item, arr)
+    let item = node.children.pop();
+    pushChild(item, arr);
   }
 }
 
 // 出入栈
 const postorder2 = function (root) {
-  if (!root) return []
+  if (!root) return [];
 
-  const stack = []
-  const res = []
-  stack.push(root)
+  const stack = [];
+  const res = [];
+  stack.push(root);
 
   while (stack.length) {
-    let node = stack.shift()
+    let node = stack.shift();
     if (node.val !== null) {
-      res.unshift(node.val)
+      res.unshift(node.val);
     }
     if (node.children) {
       while (node.children.length) {
-        let item = node.children.shift()
-        stack.unshift(item)
+        let item = node.children.shift();
+        stack.unshift(item);
       }
     }
   }
-  return res
-}
+  return res;
+};
 
 const root = {
   val: 1,
@@ -50,43 +50,42 @@ const root = {
       children: [
         {
           val: 5,
-          children: []
+          children: [],
         },
         {
           val: 6,
-          children: []
-        }
-      ]
+          children: [],
+        },
+      ],
     },
     {
       val: 3,
       children: [
         {
           val: 7,
-          children: []
+          children: [],
         },
         {
           val: 8,
-          children: []
-        }
-      ]
+          children: [],
+        },
+      ],
     },
     {
       val: 4,
       children: [
         {
           val: 9,
-          children: []
+          children: [],
         },
         {
           val: 10,
-          children: []
-        }
-      ]
-    }
-  ]
-}
+          children: [],
+        },
+      ],
+    },
+  ],
+};
 
-const result = postorder(root)
-console.log(result)
-
+const result = postorder(root);
+console.log(result);

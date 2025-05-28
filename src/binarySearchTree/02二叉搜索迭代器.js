@@ -6,8 +6,6 @@
 
 // 你可以假设 next() 调用总是有效的，也就是说，当调用 next() 时，BST 的中序遍历中至少存在一个下一个数字。
 
-
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -19,41 +17,40 @@
  * @param {TreeNode} root
  */
 const BSTIterator = function (root) {
-  this.rootTree = root
-  this.orderList = []
-  this.curIndex = null
-  this.init()
-}
+  this.rootTree = root;
+  this.orderList = [];
+  this.curIndex = null;
+  this.init();
+};
 
 BSTIterator.prototype.init = function () {
-  const stack = []
+  const stack = [];
   if (this.rootTree) {
-    stack.push(this.rootTree)
-    this.curIndex = -1
+    stack.push(this.rootTree);
+    this.curIndex = -1;
   }
 
   while (stack.length) {
-    let item = stack.shift()
-    this.orderList.push(item.val)
+    let item = stack.shift();
+    this.orderList.push(item.val);
     if (item.left) {
-      stack.push(item.left)
+      stack.push(item.left);
     }
     if (item.right) {
-      stack.push(item.right)
+      stack.push(item.right);
     }
   }
-  this.orderList.sort((a, b) => a - b)
-
-}
+  this.orderList.sort((a, b) => a - b);
+};
 
 /**
  * @return the next smallest number
  * @return {number}
  */
 BSTIterator.prototype.next = function () {
-  if (this.curIndex === null) return null
-  if (this.curIndex < this.orderList.length - 1) return this.orderList[++this.curIndex]
-}
+  if (this.curIndex === null) return null;
+  if (this.curIndex < this.orderList.length - 1) return this.orderList[++this.curIndex];
+};
 
 /**
  * @return whether we have a next smallest number
@@ -61,8 +58,8 @@ BSTIterator.prototype.next = function () {
  */
 BSTIterator.prototype.hasNext = function () {
   if (this.curIndex === null || this.curIndex >= this.orderList.length) return false;
-  return false
-}
+  return false;
+};
 
 /**
  * Your BSTIterator object will be instantiated and called as such:
@@ -76,39 +73,39 @@ const root = {
   left: {
     val: 3,
     left: null,
-    right: null
+    right: null,
   },
   right: {
     val: 15,
     left: {
       val: 9,
       left: null,
-      right: null
+      right: null,
     },
     right: {
       val: 20,
       left: null,
-      right: null
-    }
-  }
-}
+      right: null,
+    },
+  },
+};
 
-const i = new BSTIterator(root)
+const i = new BSTIterator(root);
 
-let r1 = i.next()
-let r2 = i.hasNext()
-let r3 = i.next()
-let r4 = i.next()
-let r5 = i.next()
-let r6 = i.next()
-let r7 = i.next()
-let r8 = i.hasNext()
+let r1 = i.next();
+let r2 = i.hasNext();
+let r3 = i.next();
+let r4 = i.next();
+let r5 = i.next();
+let r6 = i.next();
+let r7 = i.next();
+let r8 = i.hasNext();
 
-console.log(r1)
-console.log(r2)
-console.log(r3)
-console.log(r4)
-console.log(r5)
-console.log(r6)
-console.log(r7)
-console.log(r8)
+console.log(r1);
+console.log(r2);
+console.log(r3);
+console.log(r4);
+console.log(r5);
+console.log(r6);
+console.log(r7);
+console.log(r8);

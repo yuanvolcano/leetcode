@@ -11,30 +11,30 @@
  */
 var Solution = function (nums) {
   this.nums = nums;
-  this.origal = JSON.parse(JSON.stringify(nums))
+  this.origal = JSON.parse(JSON.stringify(nums));
 };
 
 /**
  * @return {number[]}
  */
 Solution.prototype.reset = function () {
-  return this.nums = this.origal;
+  return (this.nums = this.origal);
 };
 
 /**
  * @return {number[]}
  */
 Solution.prototype.shuffle = function () {
-  const nums = this.nums
+  const nums = this.nums;
   for (let i = 0, randomIndex = 0, len = this.nums.length; i < len; i++) {
     randomIndex = Math.floor(Math.random() * len);
     if (randomIndex !== i) {
-      [nums[i], nums[randomIndex]] = [nums[randomIndex], nums[i]]
+      [nums[i], nums[randomIndex]] = [nums[randomIndex], nums[i]];
     }
   }
   return this.nums;
 };
 
-const s = new Solution([1, 2, 3])
-s.shuffle()
-s.reset()
+const s = new Solution([1, 2, 3]);
+s.shuffle();
+s.reset();
