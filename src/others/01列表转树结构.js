@@ -1,23 +1,27 @@
-const listTransferTree2 = function (list) {
-  const idMap = new Map(),
-    tree = [];
-  for (const item of list) {
-    idMap.set(item.code, item);
-  }
-  for (const item of list) {
-    const parent = idMap.get(item.parentCode);
+/**
+ * 将扁平列表转换为树形结构
+ * @param {Array<{code: string, parentCode: string, name: string}>} list - 扁平列表数据
+ * @returns {Array} 树形结构数据
+ */
+const listToTree = (list) => {
+  // 使用 Map 存储所有节点，key 为 code
+  const nodeMap = new Map(list.map((item) => [item.code, { ...item, children: [] }]));
+  const tree = [];
+
+  // 构建树形结构
+  for (const [code, node] of nodeMap) {
+    const parent = nodeMap.get(node.parentCode);
     if (parent) {
-      if (!parent.children) {
-        parent.children = [];
-      }
-      parent.children.push(item);
+      parent.children.push(node);
     } else {
-      tree.push(item);
+      tree.push(node);
     }
   }
+
   return tree;
 };
 
+// 测试数据
 const list = [
   {
     code: '1001',
@@ -56,5 +60,5 @@ const list = [
   },
 ];
 
-const tree = listTransferTree2(list);
-console.log(tree);
+const tree = listToTree(list);
+console.log(JSON.stringify(tree, null, 2));
